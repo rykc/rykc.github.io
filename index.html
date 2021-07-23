@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
+<head>
       <!-- Facebook -->
     <meta property="og:image" content="http://www.legco.gov.hk/mobile/img/press_releases_square.jpg"/>
-    <meta property="og:title" content="立法會秘書處新聞稿：立法會法案委員會會議"/>
     <meta property="og:type" content="website"/>
     <meta property="og:description" content=""/>
     <meta property="og:url" content="http://www.legco.gov.hk/yr20-21/chinese/press/pr20210722-1.html"/>
     <meta property="og:site_name" content="立法會秘書處新聞稿"/>
-      <script>
-            document.getElementsByTagName('meta')[1].content = "My new page description!!";
+      <script>           
+            var meta = document.createElement('meta');
+            meta.setAttribute('property', "og:title");
+            meta.content = "This is a testing page title";
+            document.getElementsByTagName('head')[0].appendChild(meta);
       </script>
+</head>
 <body>
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
