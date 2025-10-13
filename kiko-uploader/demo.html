@@ -919,68 +919,68 @@
                 <div class="code-section">
                     <h4>HTML</h4>
                     <div class="code-block">
-                        &lt;!DOCTYPE html&gt;
-                        &lt;html&gt;
-                        &lt;head&gt;
-                        &lt;meta charset="UTF-8"&gt;
-                        &lt;script src="kiko-uploader.min.js"&gt;&lt;/script&gt;
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        &lt;kiko-uploader
-                        max-width="200"
-                        max-height="280"
-                        show-filename="true"
-                        show-filesize="true"
-                        show-file-list="true"
-                        groups='[{"id":"docs","name":"Documents","order":0}]'
-                        &gt;&lt;/kiko-uploader&gt;
-                        &lt;/body&gt;
-                        &lt;/html&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;script src="kiko-uploader.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;kiko-uploader
+        max-width="200"
+        max-height="280"
+        show-filename="true"
+        show-filesize="true"
+        show-file-list="true" 
+        groups='[{"id":"docs","name":"Documents","order":0}]'
+    &gt;&lt;/kiko-uploader&gt;
+&lt;/body&gt;
+&lt;/html&gt;
                     </div>
                 </div>
 
                 <div class="code-section">
                     <h4>JavaScript (optional)</h4>
                     <div class="code-block">
-                        const uploader = document.querySelector('kiko-uploader');
+const uploader = document.querySelector('kiko-uploader');
 
-                        // Get uploaded files
-                        const files = uploader.getUploadedFiles();
-                        console.log('Uploaded files:', files);
+// Get uploaded files
+const files = uploader.getUploadedFiles();
+console.log('Uploaded files:', files);
 
-                        // Listen to events
-                        uploader.addEventListener('file-added', (event) => {
-                        console.log('File added:', event.detail);
-                        console.log('All files:', uploader.getUploadedFiles());
-                        });
+// Listen to events
+uploader.addEventListener('file-added', (event) => {
+    console.log('File added:', event.detail);
+    console.log('All files:', uploader.getUploadedFiles());
+});
 
-                        // Add a group programmatically
-                        uploader.addGroup('New Group');
+// Add a group programmatically
+uploader.addGroup('New Group');
                     </div>
                 </div>
 
                 <div class="code-section">
                     <h4>Set Files Programmatically (optional)</h4>
                     <div class="code-block">
-                        // Set files programmatically (useful for loading saved state)
-                        const sampleFiles = [
-                        {
-                        file: new File(['sample content'], 'document1.pdf', { type: 'application/pdf' }),
-                        group: 'Documents',
-                        description: 'Important document'
-                        },
-                        {
-                        file: new File(['sample content'], 'image1.jpg', { type: 'image/jpeg' }),
-                        group: 'Images',
-                        description: 'Sample image'
-                        },
-                        {
-                        file: new File(['sample content'], 'report.pdf', { type: 'application/pdf' }),
-                        group: 'Reports',
-                        description: 'Monthly report'
-                        }
-                        ];
-                        await uploader.setUploadedFiles(sampleFiles);
+// Set files programmatically (useful for loading saved state)
+const sampleFiles = [
+    {
+        file: new File(['sample content'], 'document1.pdf', { type: 'application/pdf' }),
+        group: 'Documents',
+        description: 'Important document'
+    },
+    {
+        file: new File(['sample content'], 'image1.jpg', { type: 'image/jpeg' }),
+        group: 'Images',
+        description: 'Sample image'
+    },
+    {
+        file: new File(['sample content'], 'report.pdf', { type: 'application/pdf' }),
+        group: 'Reports',
+        description: 'Monthly report'
+    }
+];
+await uploader.setUploadedFiles(sampleFiles);
                     </div>
                 </div>
             </div>
@@ -992,52 +992,52 @@
                 <div class="code-section">
                     <h4>React Component</h4>
                     <div class="code-block">
-                        import React, { useRef, useEffect } from 'react';
-                        import './kiko-uploader.min.js';
+import React, { useRef, useEffect } from 'react';
+import './kiko-uploader.min.js';
 
-                        function KikoUploaderApp() {
-                        const uploaderRef = useRef(null);
+function KikoUploaderApp() {
+    const uploaderRef = useRef(null);
 
-                        useEffect(() => {
-                        const uploader = uploaderRef.current;
+    useEffect(() => {
+        const uploader = uploaderRef.current;
 
-                        const handleFileAdded = (event) => {
-                        console.log('File added:', event.detail);
-                        };
+        const handleFileAdded = (event) => {
+            console.log('File added:', event.detail);
+        };
 
-                        uploader.addEventListener('file-added', handleFileAdded);
+        uploader.addEventListener('file-added', handleFileAdded);
 
-                        return () => {
-                        uploader.removeEventListener('file-added', handleFileAdded);
-                        };
-                        }, []);
+        return () => {
+            uploader.removeEventListener('file-added', handleFileAdded);
+        };
+    }, []);
 
-                        const getFiles = () => {
-                        const files = uploaderRef.current.getUploadedFiles();
-                        console.log('Uploaded files:', files);
-                        };
+    const getFiles = () => {
+        const files = uploaderRef.current.getUploadedFiles();
+        console.log('Uploaded files:', files);
+    };
 
-                        const addGroup = () => {
-                        uploaderRef.current.addGroup('New Group');
-                        };
+    const addGroup = () => {
+        uploaderRef.current.addGroup('New Group');
+    };
 
-                        return (
-                        &lt;div&gt;
-                        &lt;kiko-uploader
-                        ref={uploaderRef}
-                        max-width="200"
-                        max-height="280"
-                        show-filename="true"
-                        groups='[{"id":"docs","name":"Documents"}]'
-                        /&gt;
+    return (
+        &lt;div&gt;
+            &lt;kiko-uploader
+                ref={uploaderRef}
+                max-width="200"
+                max-height="280"
+                show-filename="true"
+                groups='[{"id":"docs","name":"Documents"}]'
+            /&gt;
 
-                        &lt;button onClick={getFiles}&gt;Get Files&lt;/button&gt;
-                        &lt;button onClick={addGroup}&gt;Add Group&lt;/button&gt;
-                        &lt;/div&gt;
-                        );
-                        }
+            &lt;button onClick={getFiles}&gt;Get Files&lt;/button&gt;
+            &lt;button onClick={addGroup}&gt;Add Group&lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
 
-                        export default KikoUploaderApp;
+export default KikoUploaderApp;
                     </div>
                 </div>
             </div>
@@ -1049,260 +1049,260 @@
                 <div class="code-section">
                     <h4>Redux Store Setup</h4>
                     <div class="code-block">
-                        // store.js
-                        import { createStore } from 'redux';
-                        import kikoUploaderReducer from './reducers/kikoUploaderReducer';
+// store.js
+import { createStore } from 'redux';
+import kikoUploaderReducer from './reducers/kikoUploaderReducer';
 
-                        const store = createStore(kikoUploaderReducer);
+const store = createStore(kikoUploaderReducer);
 
-                        export default store;
+export default store;
                     </div>
                 </div>
 
                 <div class="code-section">
                     <h4>Actions</h4>
                     <div class="code-block">
-                        // actions/kikoUploaderActions.js
-                        export const ADD_FILE = 'ADD_FILE';
-                        export const REMOVE_FILE = 'REMOVE_FILE';
-                        export const SET_FILES = 'SET_FILES';
-                        export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
-                        export const ADD_GROUP = 'ADD_GROUP';
-                        export const CLEAR_FILES = 'CLEAR_FILES';
+// actions/kikoUploaderActions.js
+export const ADD_FILE = 'ADD_FILE';
+export const REMOVE_FILE = 'REMOVE_FILE';
+export const SET_FILES = 'SET_FILES';
+export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
+export const ADD_GROUP = 'ADD_GROUP';
+export const CLEAR_FILES = 'CLEAR_FILES';
 
-                        export const addFile = (fileData) => ({
-                        type: ADD_FILE,
-                        payload: fileData
-                        });
+export const addFile = (fileData) => ({
+    type: ADD_FILE,
+    payload: fileData
+});
 
-                        export const removeFile = (fileIndex) => ({
-                        type: REMOVE_FILE,
-                        payload: fileIndex
-                        });
+export const removeFile = (fileIndex) => ({
+    type: REMOVE_FILE,
+    payload: fileIndex
+});
 
-                        export const setFiles = (files) => ({
-                        type: SET_FILES,
-                        payload: files
-                        });
+export const setFiles = (files) => ({
+    type: SET_FILES,
+    payload: files
+});
 
-                        export const updateDescription = (fileIndex, description) => ({
-                        type: UPDATE_DESCRIPTION,
-                        payload: { fileIndex, description }
-                        });
+export const updateDescription = (fileIndex, description) => ({
+    type: UPDATE_DESCRIPTION,
+    payload: { fileIndex, description }
+});
 
-                        export const addGroup = (groupName) => ({
-                        type: ADD_GROUP,
-                        payload: groupName
-                        });
+export const addGroup = (groupName) => ({
+    type: ADD_GROUP,
+    payload: groupName
+});
 
-                        export const clearFiles = () => ({
-                        type: CLEAR_FILES
-                        });
+export const clearFiles = () => ({
+    type: CLEAR_FILES
+});
                     </div>
                 </div>
 
                 <div class="code-section">
                     <h4>Reducer</h4>
                     <div class="code-block">
-                        // reducers/kikoUploaderReducer.js
-                        import {
-                        ADD_FILE,
-                        REMOVE_FILE,
-                        SET_FILES,
-                        UPDATE_DESCRIPTION,
-                        ADD_GROUP,
-                        CLEAR_FILES
-                        } from '../actions/kikoUploaderActions';
+// reducers/kikoUploaderReducer.js
+import {
+    ADD_FILE,
+    REMOVE_FILE,
+    SET_FILES,
+    UPDATE_DESCRIPTION,
+    ADD_GROUP,
+    CLEAR_FILES
+} from '../actions/kikoUploaderActions';
 
-                        const initialState = {
-                        files: [],
-                        groups: [
-                        { id: 'reports', name: 'Annual Reports', order: 0 },
-                        { id: 'documents', name: 'General documents', order: 1 },
-                        { id: 'images', name: 'Images', order: 2 }
-                        ]
-                        };
+const initialState = {
+    files: [],
+    groups: [
+        { id: 'reports', name: 'Annual Reports', order: 0 },
+        { id: 'documents', name: 'General documents', order: 1 },
+        { id: 'images', name: 'Images', order: 2 }
+    ]
+};
 
-                        const kikoUploaderReducer = (state = initialState, action) => {
-                        switch (action.type) {
-                        case ADD_FILE:
-                        return {
-                        ...state,
-                        files: [...state.files, action.payload]
-                        };
+const kikoUploaderReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case ADD_FILE:
+            return {
+                ...state,
+                files: [...state.files, action.payload]
+            };
 
-                        case REMOVE_FILE:
-                        return {
-                        ...state,
-                        files: state.files.filter((_, index) => index !== action.payload)
-                        };
+        case REMOVE_FILE:
+            return {
+                ...state,
+                files: state.files.filter((_, index) => index !== action.payload)
+            };
 
-                        case SET_FILES:
-                        return {
-                        ...state,
-                        files: action.payload
-                        };
+        case SET_FILES:
+            return {
+                ...state,
+                files: action.payload
+            };
 
-                        case UPDATE_DESCRIPTION:
-                        return {
-                        ...state,
-                        files: state.files.map((file, index) =>
-                        index === action.payload.fileIndex
+        case UPDATE_DESCRIPTION:
+            return {
+                ...state,
+                files: state.files.map((file, index) =>
+                    index === action.payload.fileIndex
                         ? { ...file, description: action.payload.description }
                         : file
-                        )
-                        };
+                )
+            };
 
-                        case ADD_GROUP:
-                        const newGroupId = `group_${Date.now()}`;
-                        return {
-                        ...state,
-                        groups: [...state.groups, {
-                        id: newGroupId,
-                        name: action.payload,
-                        order: state.groups.length
-                        }]
-                        };
+        case ADD_GROUP:
+            const newGroupId = `group_${Date.now()}`;
+            return {
+                ...state,
+                groups: [...state.groups, {
+                    id: newGroupId,
+                    name: action.payload,
+                    order: state.groups.length
+                }]
+            };
 
-                        case CLEAR_FILES:
-                        return {
-                        ...state,
-                        files: []
-                        };
+        case CLEAR_FILES:
+            return {
+                ...state,
+                files: []
+            };
 
-                        default:
-                        return state;
-                        }
-                        };
+        default:
+            return state;
+    }
+};
 
-                        export default kikoUploaderReducer;
+export default kikoUploaderReducer;
                     </div>
                 </div>
 
                 <div class="code-section">
                     <h4>React Component with Redux</h4>
                     <div class="code-block">
-                        // components/KikoUploaderRedux.js
-                        import React, { useRef, useEffect } from 'react';
-                        import { useSelector, useDispatch } from 'react-redux';
-                        import {
-                        addFile,
-                        removeFile,
-                        setFiles,
-                        updateDescription,
-                        addGroup,
-                        clearFiles
-                        } from '../actions/kikoUploaderActions';
-                        import './kiko-uploader.min.js';
+// components/KikoUploaderRedux.js
+import React, { useRef, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    addFile,
+    removeFile,
+    setFiles,
+    updateDescription,
+    addGroup,
+    clearFiles
+} from '../actions/kikoUploaderActions';
+import './kiko-uploader.min.js';
 
-                        function KikoUploaderRedux() {
-                        const uploaderRef = useRef(null);
-                        const dispatch = useDispatch();
-                        const { files, groups } = useSelector(state => state);
+function KikoUploaderRedux() {
+    const uploaderRef = useRef(null);
+    const dispatch = useDispatch();
+    const { files, groups } = useSelector(state => state);
 
-                        useEffect(() => {
-                        const uploader = uploaderRef.current;
+    useEffect(() => {
+        const uploader = uploaderRef.current;
 
-                        const handleFileAdded = (event) => {
-                        dispatch(addFile(event.detail));
-                        };
+        const handleFileAdded = (event) => {
+            dispatch(addFile(event.detail));
+        };
 
-                        const handleFileRemoved = (event) => {
-                        dispatch(removeFile(event.detail.index));
-                        };
+        const handleFileRemoved = (event) => {
+            dispatch(removeFile(event.detail.index));
+        };
 
-                        const handleDescriptionUpdated = (event) => {
-                        dispatch(updateDescription(event.detail.fileIndex, event.detail.description));
-                        };
+        const handleDescriptionUpdated = (event) => {
+            dispatch(updateDescription(event.detail.fileIndex, event.detail.description));
+        };
 
-                        const handleFilesCleared = () => {
-                        dispatch(clearFiles());
-                        };
+        const handleFilesCleared = () => {
+            dispatch(clearFiles());
+        };
 
-                        uploader.addEventListener('file-added', handleFileAdded);
-                        uploader.addEventListener('file-removed', handleFileRemoved);
-                        uploader.addEventListener('description-updated', handleDescriptionUpdated);
-                        uploader.addEventListener('files-cleared', handleFilesCleared);
+        uploader.addEventListener('file-added', handleFileAdded);
+        uploader.addEventListener('file-removed', handleFileRemoved);
+        uploader.addEventListener('description-updated', handleDescriptionUpdated);
+        uploader.addEventListener('files-cleared', handleFilesCleared);
 
-                        return () => {
-                        uploader.removeEventListener('file-added', handleFileAdded);
-                        uploader.removeEventListener('file-removed', handleFileRemoved);
-                        uploader.removeEventListener('description-updated', handleDescriptionUpdated);
-                        uploader.removeEventListener('files-cleared', handleFilesCleared);
-                        };
-                        }, [dispatch]);
+        return () => {
+            uploader.removeEventListener('file-added', handleFileAdded);
+            uploader.removeEventListener('file-removed', handleFileRemoved);
+            uploader.removeEventListener('description-updated', handleDescriptionUpdated);
+            uploader.removeEventListener('files-cleared', handleFilesCleared);
+        };
+    }, [dispatch]);
 
-                        const handleGetFiles = () => {
-                        const uploaderFiles = uploaderRef.current.getUploadedFiles();
-                        dispatch(setFiles(uploaderFiles));
-                        console.log('Files from Redux state:', files);
-                        };
+    const handleGetFiles = () => {
+        const uploaderFiles = uploaderRef.current.getUploadedFiles();
+        dispatch(setFiles(uploaderFiles));
+        console.log('Files from Redux state:', files);
+    };
 
-                        const handleAddGroup = () => {
-                        const groupName = 'New Redux Group';
-                        dispatch(addGroup(groupName));
-                        uploaderRef.current.addGroup(groupName);
-                        };
+    const handleAddGroup = () => {
+        const groupName = 'New Redux Group';
+        dispatch(addGroup(groupName));
+        uploaderRef.current.addGroup(groupName);
+    };
 
-                        const handleClearFiles = () => {
-                        uploaderRef.current.clearAllFiles();
-                        };
+    const handleClearFiles = () => {
+        uploaderRef.current.clearAllFiles();
+    };
 
-                        return (
-                        &lt;div&gt;
-                        &lt;h3&gt;Redux State&lt;/h3&gt;
-                        &lt;p&gt;Files in Redux: {files.length}&lt;/p&gt;
-                        &lt;p&gt;Groups in Redux: {groups.length}&lt;/p&gt;
+    return (
+        &lt;div&gt;
+            &lt;h3&gt;Redux State&lt;/h3&gt;
+            &lt;p&gt;Files in Redux: {files.length}&lt;/p&gt;
+            &lt;p&gt;Groups in Redux: {groups.length}&lt;/p&gt;
 
-                        &lt;div style={{ marginBottom: '20px' }}&gt;
-                        &lt;button onClick={handleGetFiles} style={{ marginRight: '10px' }}&gt;
-                        Sync Files to Redux
-                        &lt;/button&gt;
-                        &lt;button onClick={handleAddGroup} style={{ marginRight: '10px' }}&gt;
-                        Add Group
-                        &lt;/button&gt;
-                        &lt;button onClick={handleClearFiles}&gt;
-                        Clear All Files
-                        &lt;/button&gt;
-                        &lt;/div&gt;
+            &lt;div style={{ marginBottom: '20px' }}&gt;
+                &lt;button onClick={handleGetFiles} style={{ marginRight: '10px' }}&gt;
+                    Sync Files to Redux
+                &lt;/button&gt;
+                &lt;button onClick={handleAddGroup} style={{ marginRight: '10px' }}&gt;
+                    Add Group
+                &lt;/button&gt;
+                &lt;button onClick={handleClearFiles}&gt;
+                    Clear All Files
+                &lt;/button&gt;
+            &lt;/div&gt;
 
-                        &lt;kiko-uploader
-                        ref={uploaderRef}
-                        max-width="200"
-                        max-height="280"
-                        show-filename="true"
-                        show-filesize="true"
-                        groups={JSON.stringify(groups)}
-                        /&gt;
-                        &lt;/div&gt;
-                        );
-                        }
+            &lt;kiko-uploader
+                ref={uploaderRef}
+                max-width="200"
+                max-height="280"
+                show-filename="true"
+                show-filesize="true"
+                groups={JSON.stringify(groups)}
+            /&gt;
+        &lt;/div&gt;
+    );
+}
 
-                        export default KikoUploaderRedux;
+export default KikoUploaderRedux;
                     </div>
                 </div>
 
                 <div class="code-section">
                     <h4>App Setup</h4>
                     <div class="code-block">
-                        // App.js
-                        import React from 'react';
-                        import { Provider } from 'react-redux';
-                        import store from './store';
-                        import KikoUploaderRedux from './components/KikoUploaderRedux';
+// App.js
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
+import KikoUploaderRedux from './components/KikoUploaderRedux';
 
-                        function App() {
-                        return (
-                        &lt;Provider store={store}&gt;
-                        &lt;div className="App"&gt;
-                        &lt;h1&gt;Kiko Uploader with Redux&lt;/h1&gt;
-                        &lt;KikoUploaderRedux /&gt;
-                        &lt;/div&gt;
-                        &lt;/Provider&gt;
-                        );
-                        }
+function App() {
+    return (
+        &lt;Provider store={store}&gt;
+            &lt;div className="App"&gt;
+                &lt;h1&gt;Kiko Uploader with Redux&lt;/h1&gt;
+                &lt;KikoUploaderRedux /&gt;
+            &lt;/div&gt;
+        &lt;/Provider&gt;
+    );
+}
 
-                        export default App;
+export default App;
                     </div>
                 </div>
 
@@ -1319,42 +1319,42 @@
                 <div class="code-section">
                     <h4>Vue Component</h4>
                     <div class="code-block">
-                        &lt;template&gt;
-                        &lt;div&gt;
-                        &lt;kiko-uploader
-                        ref="uploader"
-                        max-width="200"
-                        max-height="280"
-                        show-filename="true"
-                        @file-added="onFileAdded"
-                        /&gt;
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;kiko-uploader
+            ref="uploader"
+            max-width="200"
+            max-height="280"
+            show-filename="true"
+            @file-added="onFileAdded"
+        /&gt;
 
-                        &lt;button @click="getFiles"&gt;Get Files&lt;/button&gt;
-                        &lt;button @click="addGroup"&gt;Add Group&lt;/button&gt;
-                        &lt;/div&gt;
-                        &lt;/template&gt;
+        &lt;button @click="getFiles"&gt;Get Files&lt;/button&gt;
+        &lt;button @click="addGroup"&gt;Add Group&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
 
-                        &lt;script&gt;
-                        import './kiko-uploader.min.js';
+&lt;script&gt;
+import './kiko-uploader.min.js';
 
-                        export default {
-                        mounted() {
-                        // Component is ready
-                        },
-                        methods: {
-                        onFileAdded(event) {
-                        console.log('File added:', event.detail);
-                        },
-                        getFiles() {
-                        const files = this.$refs.uploader.getUploadedFiles();
-                        console.log('Files:', files);
-                        },
-                        addGroup() {
-                        this.$refs.uploader.addGroup('New Group');
-                        }
-                        }
-                        }
-                        &lt;/script&gt;
+export default {
+    mounted() {
+        // Component is ready
+    },
+    methods: {
+        onFileAdded(event) {
+            console.log('File added:', event.detail);
+        },
+        getFiles() {
+            const files = this.$refs.uploader.getUploadedFiles();
+            console.log('Files:', files);
+        },
+        addGroup() {
+            this.$refs.uploader.addGroup('New Group');
+        }
+    }
+}
+&lt;/script&gt;
                     </div>
                 </div>
             </div>
@@ -1366,52 +1366,50 @@
                 <div class="code-section">
                     <h4>Angular Component</h4>
                     <div class="code-block">
-                        import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
-                        @Component({
-                        selector: 'app-file-uploader',
-                        template: `
-                        &lt;kiko-uploader
-                        #uploader
-                        max-width="200"
-                        max-height="280"
-                        show-filename="true"
-                        (file-added)="onFileAdded($event)"
-                        &gt;&lt;/kiko-uploader&gt;
+@Component({
+    selector: 'app-file-uploader',
+    template: `
+        &lt;kiko-uploader
+            #uploader
+            max-width="200"
+            max-height="280"
+            show-filename="true"
+            (file-added)="onFileAdded($event)"
+        &gt;&lt;/kiko-uploader&gt;
 
-                        &lt;button (click)="getFiles()"&gt;Get Files&lt;/button&gt;
-                        &lt;button (click)="addGroup()"&gt;Add Group&lt;/button&gt;
-                        `
-                        })
-                        export class KikoUploaderComponent {
-                        @ViewChild('uploader') uploader!: ElementRef;
+        &lt;button (click)="getFiles()"&gt;Get Files&lt;/button&gt;
+        &lt;button (click)="addGroup()"&gt;Add Group&lt;/button&gt;
+    `
+})
+export class KikoUploaderComponent {
+    @ViewChild('uploader') uploader!: ElementRef;
 
-                        ngAfterViewInit() {
-                        // Component is ready
-                        }
+    ngAfterViewInit() {
+        // Component is ready
+    }
 
-                        onFileAdded(event: any) {
-                        console.log('File added:', event.detail);
-                        }
+    onFileAdded(event: any) {
+        console.log('File added:', event.detail);
+    }
 
-                        getFiles() {
-                        const files = this.uploader.nativeElement.getUploadedFiles();
-                        console.log('Files:', files);
-                        }
+    getFiles() {
+        const files = this.uploader.nativeElement.getUploadedFiles();
+        console.log('Files:', files);
+    }
 
-                        addGroup() {
-                        this.uploader.nativeElement.addGroup('New Group');
-                        }
-                        }
+    addGroup() {
+        this.uploader.nativeElement.addGroup('New Group');
+    }
+}
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <p>Developed by rykc@github, 2025. <br><span
-                    style="font-weight: bold;background-color: white;color: #1a202c;padding:0 5px;">Kiko Uploader</span>
-                marks the beginning of the Kiko UI Framework. Stay tuned, more UI components are on the way!</p>
+            <p>Developed by rykc@github, 2025. <br><span style="font-weight: bold;background-color: white;color: #1a202c;padding:0 5px;">Kiko Uploader</span> marks the beginning of the Kiko UI Framework. Stay tuned, more UI components are on the way!</p>
         </div>
     </div>
 
