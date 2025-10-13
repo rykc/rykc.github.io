@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiko Uploader - PDF, JPG & PNG File Upload Demo</title>
+    <script src="kiko-uploader.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1330px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            padding: 60px 20px 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero .logo {
+            width: auto;
+            height: 200px;
+            margin: 0 auto 20px auto;
+            background: url('logo.png') no-repeat center/contain;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .component-header h1 {
+            background: blanchedalmond;
+            color: chocolate;
+            margin-bottom: 10px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .feature-card p {
+            color: #718096;
+            margin-bottom: 20px;
+        }
+
+        .feature-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .avatar {
+            width: 60px;
+            height: 60px;
+            background: url('avatar.png') no-repeat center/cover;
+            display: inline-block;
+            vertical-align: text-bottom;
+            margin-right: 10px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-group label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .control-group input,
+        .control-group select {
+            padding: 8px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .control-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin: auto;
+        }
+
+        .control-group input[type="color"] {
+            width: 50px;
+            height: 30px;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            height: 50px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-component {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            background: #fafbfc;
+        }
+
+        .component-header {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .component-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .component-header p {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+
+        .control-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            align-self: stretch;
+        }
+
+        .control-section h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        .control-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: end;
+        }
+
+        .add-group-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .add-group-controls input[type="text"] {
+            flex: 1;
+            min-width: 150px;
+            padding: 10px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .add-group-controls input[type="text"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .code-section {
+            background: #1a202c;
+            color: #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            overflow-x: auto;
+        }
+
+        .code-section h4 {
+            color: #63b3ed;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .code-block {
+            background: #2d3748;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            border: 1px solid #4a5568;
+        }
+
+        .api-section {
+            background: #f0f4f8;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .api-section h3 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .api-item {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .api-item h4 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .api-item p {
+            color: #718096;
+            margin-bottom: 15px;
+        }
+
+        .method-signature {
+            background: #f7fafc;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #2b6cb0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .event-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .event-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .event-item h5 {
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .event-item p {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .framework-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .framework-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            color: #718096;
+        }
+
+        .tab-btn.active {
+            color: #4CAF50;
+            border-bottom-color: #4CAF50;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 0px 20px 40px;
+            opacity: 0.8;
+        }
+
+        /* Dialog Styles */
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .dialog-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dialog-box {
+            background: white;
+            border-radius: 16px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .dialog-overlay.show .dialog-box {
+            transform: scale(1);
+        }
+
+        .dialog-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 30px;
+            border-bottom: 1px solid #e2e8f0;
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            color: white;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .dialog-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .dialog-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .dialog-close:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .dialog-body {
+            padding: 30px;
+            max-height: calc(80vh - 120px);
+            overflow-y: auto;
+        }
+
+        .dialog-body pre {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            border: 1px solid #4a5568;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 12px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .logo {
+                height: 120px;
+            }
+
+            .demo-section {
+                padding: 16px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .feature-card {
+                padding: 12px;
+            }
+
+            .framework-tabs {
+                flex-direction: column;
+            }
+
+            .control-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+
+            .add-group-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .add-group-controls input[type="text"] {
+                margin-bottom: 10px;
+            }
+
+            .component-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .demo-component {
+                padding: 16px;
+                margin: 18px 0;
+            }
+
+            .control-section {
+                padding: 12px;
+                flex: 1;
+            }
+
+            .btn {
+                width: 100%;
+                height: auto;
+                padding: 12px;
+                display: block;
+            }
+
+            .avatar {
+                width: 48px;
+                height: 48px;
+            }
+
+            .feature-icon {
+                font-size: 1.5rem;
+            }
+
+            kiko-uploader {
+                zoom: 0.7;
+            }
+
+            .framework-section {
+                padding: 10px;
+            }
+
+            .footer {
+                padding-bottom: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .hero {
+                padding: 24px 10px 18px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .demo-section {
+                padding: 12px;
+            }
+
+            .feature-card {
+                padding: 10px;
+            }
+
+            .feature-grid {
+                gap: 10px;
+            }
+
+            .dialog-box {
+                width: 95%;
+                max-height: 90vh;
+            }
+
+            .dialog-header {
+                padding: 16px;
+            }
+
+            .dialog-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .dialog-body {
+                padding: 16px;
+            }
+
+            .dialog-body pre {
+                font-size: 0.8rem;
+                padding: 12px;
+            }
+
+            .code-section {
+                padding: 20px;
+            }
+
+            .code-block {
+                font-size: 0.85rem;
+                padding: 12px;
+            }
+
+            .btn {
+                padding: 10px;
+            }
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Extra small phones */
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+
+            .hero .logo {
+                height: 90px;
+            }
+
+            .component-header h1 {
+                font-size: 1rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .feature-card {
+                padding: 8px;
+            }
+
+            .container {
+                padding: 8px;
+            }
+        }
+
+        *** End Patch
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="logo"></div>
+            <p>Kiko Uploader makes uploading and sorting PDF, JPG and PNG files with ease.</p>
+        </div>
+
+        <div class="demo-section">
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">📁</span>
+                    <h3>File Upload</h3>
+                    <p>Drag and drop PDF, JPG, and PNG files or click to browse.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🖼️</span>
+                    <h3>Thumbnail Generation</h3>
+                    <p>Automatic thumbnail generation from PDFs and images.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📋</span>
+                    <h3>Custom Sorting</h3>
+                    <p>Organize files into custom groups with drag-and-drop reordering.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">✏️</span>
+                    <h3>Description Editing</h3>
+                    <p>Add and edit descriptions for each uploaded file.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Customizable UI</h3>
+                    <p>Customize colors, dimensions, and display options.</p>
+
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">⚙️</span>
+                    <h3>Programmatic Control</h3>
+                    <p>Full JavaScript API for getting files, setting files, and managing groups.</p>
+                </div>
+            </div>
+
+            <div class="demo-component">
+                <div class="component-header">
+                    <h1>
+                        <div class="avatar"></div>Kiko demo~
+                    </h1>
+                    <p>Let's explore Kiko features!</p>
+                </div>
+
+                <!--<div class="feature-controls">
+                    <div class="control-section">
+                        <h4>Options</h4>
+                        <div class="control-row">
+                            <div class="control-group">
+                                <label>Filename</label>
+                                <input type="checkbox" id="toggle-filename" checked>
+                            </div>
+                            <div class="control-group">
+                                <label>Filesize</label>
+                                <input type="checkbox" id="toggle-filesize" checked>
+                            </div>
+                            <div class="control-group">
+                                <label>File List</label>
+                                <input type="checkbox" id="toggle-filelist" checked>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-section">
+                        <h4>UI Color</h4>
+                        <div class="control-row">
+                            <div class="control-group">
+                                <label>Background</label>
+                                <input type="color" id="bg-color" value="#f0f8ff">
+                            </div>
+                            <div class="control-group">
+                                <label>Border</label>
+                                <input type="color" id="border-color" value="#4285f4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-section">
+                        <h4>Actions</h4>
+                        <div class="control-row">
+                            <button class="btn" id="btn-get">Get Files</button>
+                            <button class="btn btn-secondary" id="btn-clear">Clear All</button>
+                            <div class="add-group-controls">
+                                <input type="text" id="group-name-input" placeholder="Enter group name"
+                                    value="New Group">
+                                <button class="btn btn-secondary" id="btn-add-group">Add Group</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>//-->
+
+                <kiko-uploader id="uploader" max-width="200" max-height="280" show-filename="true"
+                    show-filesize="true" show-file-list="true" uploader-bg-color="#f0f8ff"
+                    uploader-border-color="#4285f4" max-desc-length="200"
+                    groups='[{"id":"group-1","name":"Group 1","order":0},{"id":"group-2","name":"Group 2","order":1}]'>
+                </kiko-uploader>
+
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <div class="section-header">
+                <h2>🔧 Kiko API</h2>
+                <p>Access and control the component through JavaScript</p>
+            </div>
+
+            <div class="api-section">
+                <h3>Methods</h3>
+
+                <div class="api-item">
+                    <h4>getUploadedFiles()</h4>
+                    <p>Returns an array of uploaded files with their metadata.</p>
+                    <div class="method-signature">
+                        uploader.getUploadedFiles() → Array&lt;{file, order, group, groupItemOrder, thumbnail,
+                        description}&gt;
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>setUploadedFiles(files)</h4>
+                    <p>Programmatically set files in the uploader.</p>
+                    <div class="method-signature">
+                        uploader.setUploadedFiles([{file, group?, thumbnail?, description?}])
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>addGroup(name, id?)</h4>
+                    <p>Add a new group for organizing files.</p>
+                    <div class="method-signature">
+                        uploader.addGroup("Group Name") → groupId
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>removeGroup(groupId)</h4>
+                    <p>Remove a group (files move to ungrouped).</p>
+                    <div class="method-signature">
+                        uploader.removeGroup("groupId")
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>clearAllFiles()</h4>
+                    <p>Remove all uploaded files.</p>
+                    <div class="method-signature">
+                        uploader.clearAllFiles()
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-section">
+                <h3>Events</h3>
+                <div class="event-list">
+                    <div class="event-item">
+                        <h5>file-added</h5>
+                        <p>Fired when a file is uploaded. Detail: {file, index}</p>
+                    </div>
+                    <div class="event-item">
+                        <h5>file-removed</h5>
+                        <p>Fired when a file is removed. Detail: {index}</p>
+                    </div>
+                    <div class="event-item">
+                        <h5>file-moved</h5>
+                        <p>Fired when a file is moved between groups. Detail: {fileIndex, groupId, fromGroupId}</p>
+                    </div>
+                    <div class="event-item">
+                        <h5>description-updated</h5>
+                        <p>Fired when a file description is updated. Detail: {fileIndex, description}</p>
+                    </div>
+                    <div class="event-item">
+                        <h5>files-cleared</h5>
+                        <p>Fired when all files are cleared.</p>
+                    </div>
+                    <div class="event-item">
+                        <h5>files-set</h5>
+                        <p>Fired when files are set programmatically. Detail: {count}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="framework-section">
+            <div class="section-header">
+                <h2>🚀 Framework Integration</h2>
+                <p>Let's see how to use Kiko Uploader in different frameworks</p>
+            </div>
+
+            <div class="framework-tabs">
+                <button class="tab-btn active" onclick="showTab('html')">HTML</button>
+                <button class="tab-btn" onclick="showTab('react')">React</button>
+                <button class="tab-btn" onclick="showTab('react-redux')">React + Redux</button>
+                <button class="tab-btn" onclick="showTab('vue')">Vue.js</button>
+                <button class="tab-btn" onclick="showTab('angular')">Angular</button>
+            </div>
+
+            <div id="html" class="tab-content active">
+                <h3>Plain HTML</h3>
+                <p>Simply include the component script and use the custom element in your HTML.</p>
+
+                <div class="code-section">
+                    <h4>HTML</h4>
+                    <div class="code-block">
+                        &lt;!DOCTYPE html&gt;
+                        &lt;html&gt;
+                        &lt;head&gt;
+                        &lt;meta charset="UTF-8"&gt;
+                        &lt;script src="kiko-uploader.min.js"&gt;&lt;/script&gt;
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        &lt;kiko-uploader
+                        max-width="200"
+                        max-height="280"
+                        show-filename="true"
+                        show-filesize="true"
+                        show-file-list="true"
+                        groups='[{"id":"docs","name":"Documents","order":0}]'
+                        &gt;&lt;/kiko-uploader&gt;
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </div>
+                </div>
+
+                <div class="code-section">
+                    <h4>JavaScript (optional)</h4>
+                    <div class="code-block">
+                        const uploader = document.querySelector('kiko-uploader');
+
+                        // Get uploaded files
+                        const files = uploader.getUploadedFiles();
+                        console.log('Uploaded files:', files);
+
+                        // Listen to events
+                        uploader.addEventListener('file-added', (event) => {
+                        console.log('File added:', event.detail);
+                        console.log('All files:', uploader.getUploadedFiles());
+                        });
+
+                        // Add a group programmatically
+                        uploader.addGroup('New Group');
+                    </div>
+                </div>
+
+                <div class="code-section">
+                    <h4>Set Files Programmatically (optional)</h4>
+                    <div class="code-block">
+                        // Set files programmatically (useful for loading saved state)
+                        const sampleFiles = [
+                        {
+                        file: new File(['sample content'], 'document1.pdf', { type: 'application/pdf' }),
+                        group: 'Documents',
+                        description: 'Important document'
+                        },
+                        {
+                        file: new File(['sample content'], 'image1.jpg', { type: 'image/jpeg' }),
+                        group: 'Images',
+                        description: 'Sample image'
+                        },
+                        {
+                        file: new File(['sample content'], 'report.pdf', { type: 'application/pdf' }),
+                        group: 'Reports',
+                        description: 'Monthly report'
+                        }
+                        ];
+                        await uploader.setUploadedFiles(sampleFiles);
+                    </div>
+                </div>
+            </div>
+
+            <div id="react" class="tab-content">
+                <h3>React</h3>
+                <p>Use React refs to access the component's methods and events.</p>
+
+                <div class="code-section">
+                    <h4>React Component</h4>
+                    <div class="code-block">
+                        import React, { useRef, useEffect } from 'react';
+                        import './kiko-uploader.min.js';
+
+                        function KikoUploaderApp() {
+                        const uploaderRef = useRef(null);
+
+                        useEffect(() => {
+                        const uploader = uploaderRef.current;
+
+                        const handleFileAdded = (event) => {
+                        console.log('File added:', event.detail);
+                        };
+
+                        uploader.addEventListener('file-added', handleFileAdded);
+
+                        return () => {
+                        uploader.removeEventListener('file-added', handleFileAdded);
+                        };
+                        }, []);
+
+                        const getFiles = () => {
+                        const files = uploaderRef.current.getUploadedFiles();
+                        console.log('Uploaded files:', files);
+                        };
+
+                        const addGroup = () => {
+                        uploaderRef.current.addGroup('New Group');
+                        };
+
+                        return (
+                        &lt;div&gt;
+                        &lt;kiko-uploader
+                        ref={uploaderRef}
+                        max-width="200"
+                        max-height="280"
+                        show-filename="true"
+                        groups='[{"id":"docs","name":"Documents"}]'
+                        /&gt;
+
+                        &lt;button onClick={getFiles}&gt;Get Files&lt;/button&gt;
+                        &lt;button onClick={addGroup}&gt;Add Group&lt;/button&gt;
+                        &lt;/div&gt;
+                        );
+                        }
+
+                        export default KikoUploaderApp;
+                    </div>
+                </div>
+            </div>
+
+            <div id="react-redux" class="tab-content">
+                <h3>React with Redux</h3>
+                <p>Integrate the file uploader with Redux for centralized state management.</p>
+
+                <div class="code-section">
+                    <h4>Redux Store Setup</h4>
+                    <div class="code-block">
+                        // store.js
+                        import { createStore } from 'redux';
+                        import kikoUploaderReducer from './reducers/kikoUploaderReducer';
+
+                        const store = createStore(kikoUploaderReducer);
+
+                        export default store;
+                    </div>
+                </div>
+
+                <div class="code-section">
+                    <h4>Actions</h4>
+                    <div class="code-block">
+                        // actions/kikoUploaderActions.js
+                        export const ADD_FILE = 'ADD_FILE';
+                        export const REMOVE_FILE = 'REMOVE_FILE';
+                        export const SET_FILES = 'SET_FILES';
+                        export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
+                        export const ADD_GROUP = 'ADD_GROUP';
+                        export const CLEAR_FILES = 'CLEAR_FILES';
+
+                        export const addFile = (fileData) => ({
+                        type: ADD_FILE,
+                        payload: fileData
+                        });
+
+                        export const removeFile = (fileIndex) => ({
+                        type: REMOVE_FILE,
+                        payload: fileIndex
+                        });
+
+                        export const setFiles = (files) => ({
+                        type: SET_FILES,
+                        payload: files
+                        });
+
+                        export const updateDescription = (fileIndex, description) => ({
+                        type: UPDATE_DESCRIPTION,
+                        payload: { fileIndex, description }
+                        });
+
+                        export const addGroup = (groupName) => ({
+                        type: ADD_GROUP,
+                        payload: groupName
+                        });
+
+                        export const clearFiles = () => ({
+                        type: CLEAR_FILES
+                        });
+                    </div>
+                </div>
+
+                <div class="code-section">
+                    <h4>Reducer</h4>
+                    <div class="code-block">
+                        // reducers/kikoUploaderReducer.js
+                        import {
+                        ADD_FILE,
+                        REMOVE_FILE,
+                        SET_FILES,
+                        UPDATE_DESCRIPTION,
+                        ADD_GROUP,
+                        CLEAR_FILES
+                        } from '../actions/kikoUploaderActions';
+
+                        const initialState = {
+                        files: [],
+                        groups: [
+                        { id: 'reports', name: 'Annual Reports', order: 0 },
+                        { id: 'documents', name: 'General documents', order: 1 },
+                        { id: 'images', name: 'Images', order: 2 }
+                        ]
+                        };
+
+                        const kikoUploaderReducer = (state = initialState, action) => {
+                        switch (action.type) {
+                        case ADD_FILE:
+                        return {
+                        ...state,
+                        files: [...state.files, action.payload]
+                        };
+
+                        case REMOVE_FILE:
+                        return {
+                        ...state,
+                        files: state.files.filter((_, index) => index !== action.payload)
+                        };
+
+                        case SET_FILES:
+                        return {
+                        ...state,
+                        files: action.payload
+                        };
+
+                        case UPDATE_DESCRIPTION:
+                        return {
+                        ...state,
+                        files: state.files.map((file, index) =>
+                        index === action.payload.fileIndex
+                        ? { ...file, description: action.payload.description }
+                        : file
+                        )
+                        };
+
+                        case ADD_GROUP:
+                        const newGroupId = `group_${Date.now()}`;
+                        return {
+                        ...state,
+                        groups: [...state.groups, {
+                        id: newGroupId,
+                        name: action.payload,
+                        order: state.groups.length
+                        }]
+                        };
+
+                        case CLEAR_FILES:
+                        return {
+                        ...state,
+                        files: []
+                        };
+
+                        default:
+                        return state;
+                        }
+                        };
+
+                        export default kikoUploaderReducer;
+                    </div>
+                </div>
+
+                <div class="code-section">
+                    <h4>React Component with Redux</h4>
+                    <div class="code-block">
+                        // components/KikoUploaderRedux.js
+                        import React, { useRef, useEffect } from 'react';
+                        import { useSelector, useDispatch } from 'react-redux';
+                        import {
+                        addFile,
+                        removeFile,
+                        setFiles,
+                        updateDescription,
+                        addGroup,
+                        clearFiles
+                        } from '../actions/kikoUploaderActions';
+                        import './kiko-uploader.min.js';
+
+                        function KikoUploaderRedux() {
+                        const uploaderRef = useRef(null);
+                        const dispatch = useDispatch();
+                        const { files, groups } = useSelector(state => state);
+
+                        useEffect(() => {
+                        const uploader = uploaderRef.current;
+
+                        const handleFileAdded = (event) => {
+                        dispatch(addFile(event.detail));
+                        };
+
+                        const handleFileRemoved = (event) => {
+                        dispatch(removeFile(event.detail.index));
+                        };
+
+                        const handleDescriptionUpdated = (event) => {
+                        dispatch(updateDescription(event.detail.fileIndex, event.detail.description));
+                        };
+
+                        const handleFilesCleared = () => {
+                        dispatch(clearFiles());
+                        };
+
+                        uploader.addEventListener('file-added', handleFileAdded);
+                        uploader.addEventListener('file-removed', handleFileRemoved);
+                        uploader.addEventListener('description-updated', handleDescriptionUpdated);
+                        uploader.addEventListener('files-cleared', handleFilesCleared);
+
+                        return () => {
+                        uploader.removeEventListener('file-added', handleFileAdded);
+                        uploader.removeEventListener('file-removed', handleFileRemoved);
+                        uploader.removeEventListener('description-updated', handleDescriptionUpdated);
+                        uploader.removeEventListener('files-cleared', handleFilesCleared);
+                        };
+                        }, [dispatch]);
+
+                        const handleGetFiles = () => {
+                        const uploaderFiles = uploaderRef.current.getUploadedFiles();
+                        dispatch(setFiles(uploaderFiles));
+                        console.log('Files from Redux state:', files);
+                        };
+
+                        const handleAddGroup = () => {
+                        const groupName = 'New Redux Group';
+                        dispatch(addGroup(groupName));
+                        uploaderRef.current.addGroup(groupName);
+                        };
+
+                        const handleClearFiles = () => {
+                        uploaderRef.current.clearAllFiles();
+                        };
+
+                        return (
+                        &lt;div&gt;
+                        &lt;h3&gt;Redux State&lt;/h3&gt;
+                        &lt;p&gt;Files in Redux: {files.length}&lt;/p&gt;
+                        &lt;p&gt;Groups in Redux: {groups.length}&lt;/p&gt;
+
+                        &lt;div style={{ marginBottom: '20px' }}&gt;
+                        &lt;button onClick={handleGetFiles} style={{ marginRight: '10px' }}&gt;
+                        Sync Files to Redux
+                        &lt;/button&gt;
+                        &lt;button onClick={handleAddGroup} style={{ marginRight: '10px' }}&gt;
+                        Add Group
+                        &lt;/button&gt;
+                        &lt;button onClick={handleClearFiles}&gt;
+                        Clear All Files
+                        &lt;/button&gt;
+                        &lt;/div&gt;
+
+                        &lt;kiko-uploader
+                        ref={uploaderRef}
+                        max-width="200"
+                        max-height="280"
+                        show-filename="true"
+                        show-filesize="true"
+                        groups={JSON.stringify(groups)}
+                        /&gt;
+                        &lt;/div&gt;
+                        );
+                        }
+
+                        export default KikoUploaderRedux;
+                    </div>
+                </div>
+
+                <div class="code-section">
+                    <h4>App Setup</h4>
+                    <div class="code-block">
+                        // App.js
+                        import React from 'react';
+                        import { Provider } from 'react-redux';
+                        import store from './store';
+                        import KikoUploaderRedux from './components/KikoUploaderRedux';
+
+                        function App() {
+                        return (
+                        &lt;Provider store={store}&gt;
+                        &lt;div className="App"&gt;
+                        &lt;h1&gt;Kiko Uploader with Redux&lt;/h1&gt;
+                        &lt;KikoUploaderRedux /&gt;
+                        &lt;/div&gt;
+                        &lt;/Provider&gt;
+                        );
+                        }
+
+                        export default App;
+                    </div>
+                </div>
+
+                <div class="code-section">
+                    <h4>Installation</h4>
+                    <div class="code-block">npm install redux react-redux</div>
+                </div>
+            </div>
+
+            <div id="vue" class="tab-content">
+                <h3>Vue.js</h3>
+                <p>Use Vue's ref system to access the component.</p>
+
+                <div class="code-section">
+                    <h4>Vue Component</h4>
+                    <div class="code-block">
+                        &lt;template&gt;
+                        &lt;div&gt;
+                        &lt;kiko-uploader
+                        ref="uploader"
+                        max-width="200"
+                        max-height="280"
+                        show-filename="true"
+                        @file-added="onFileAdded"
+                        /&gt;
+
+                        &lt;button @click="getFiles"&gt;Get Files&lt;/button&gt;
+                        &lt;button @click="addGroup"&gt;Add Group&lt;/button&gt;
+                        &lt;/div&gt;
+                        &lt;/template&gt;
+
+                        &lt;script&gt;
+                        import './kiko-uploader.min.js';
+
+                        export default {
+                        mounted() {
+                        // Component is ready
+                        },
+                        methods: {
+                        onFileAdded(event) {
+                        console.log('File added:', event.detail);
+                        },
+                        getFiles() {
+                        const files = this.$refs.uploader.getUploadedFiles();
+                        console.log('Files:', files);
+                        },
+                        addGroup() {
+                        this.$refs.uploader.addGroup('New Group');
+                        }
+                        }
+                        }
+                        &lt;/script&gt;
+                    </div>
+                </div>
+            </div>
+
+            <div id="angular" class="tab-content">
+                <h3>Angular</h3>
+                <p>Use ViewChild to access the native element.</p>
+
+                <div class="code-section">
+                    <h4>Angular Component</h4>
+                    <div class="code-block">
+                        import { Component, ViewChild, ElementRef } from '@angular/core';
+
+                        @Component({
+                        selector: 'app-file-uploader',
+                        template: `
+                        &lt;kiko-uploader
+                        #uploader
+                        max-width="200"
+                        max-height="280"
+                        show-filename="true"
+                        (file-added)="onFileAdded($event)"
+                        &gt;&lt;/kiko-uploader&gt;
+
+                        &lt;button (click)="getFiles()"&gt;Get Files&lt;/button&gt;
+                        &lt;button (click)="addGroup()"&gt;Add Group&lt;/button&gt;
+                        `
+                        })
+                        export class KikoUploaderComponent {
+                        @ViewChild('uploader') uploader!: ElementRef;
+
+                        ngAfterViewInit() {
+                        // Component is ready
+                        }
+
+                        onFileAdded(event: any) {
+                        console.log('File added:', event.detail);
+                        }
+
+                        getFiles() {
+                        const files = this.uploader.nativeElement.getUploadedFiles();
+                        console.log('Files:', files);
+                        }
+
+                        addGroup() {
+                        this.uploader.nativeElement.addGroup('New Group');
+                        }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Developed by rykc@github, 2025. <br><span
+                    style="font-weight: bold;background-color: white;color: #1a202c;padding:0 5px;">Kiko Uploader</span>
+                marks the beginning of the Kiko UI Framework. Stay tuned, more UI components are on the way!</p>
+        </div>
+    </div>
+
+    <!-- Files Dialog -->
+    <div id="files-dialog" class="dialog-overlay">
+        <div class="dialog-box">
+            <div class="dialog-header">
+                <h3>📄 Uploaded Files</h3>
+                <button class="dialog-close" id="files-dialog-close">&times;</button>
+            </div>
+            <div class="dialog-body">
+                <pre id="files-dialog-content">// No files uploaded yet...</pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all tab buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Component interaction
+        document.addEventListener('DOMContentLoaded', () => {
+            const uploader = document.getElementById('uploader');
+
+            // Control attribute toggles
+            document.getElementById('toggle-filename').addEventListener('change', e =>
+                uploader.setAttribute('show-filename', e.target.checked));
+            document.getElementById('toggle-filesize').addEventListener('change', e =>
+                uploader.setAttribute('show-filesize', e.target.checked));
+            document.getElementById('toggle-filelist').addEventListener('change', e =>
+                uploader.setAttribute('show-file-list', e.target.checked));
+            document.getElementById('bg-color').addEventListener('input', e =>
+                uploader.setAttribute('uploader-bg-color', e.target.value));
+            document.getElementById('border-color').addEventListener('input', e =>
+                uploader.setAttribute('uploader-border-color', e.target.value));
+
+            // Button handlers
+            document.getElementById('btn-get').addEventListener('click', () => {
+                const files = uploader.getUploadedFiles();
+                const filesDialog = document.getElementById('files-dialog');
+                const filesContent = document.getElementById('files-dialog-content');
+
+                if (files.length === 0) {
+                    filesContent.textContent = '// No files uploaded yet...';
+                } else {
+                    filesContent.textContent = JSON.stringify(files.map(f => ({
+                        name: f.file.name,
+                        size: f.file.size,
+                        order: f.order,
+                        group: f.group,
+                        groupItemOrder: f.groupItemOrder,
+                        hasThumbnail: !!f.thumbnail,
+                        description: f.description || ''
+                    })), null, 2);
+                }
+
+                filesDialog.classList.add('show');
+            });
+
+            document.getElementById('btn-clear').addEventListener('click', () => {
+                uploader.clearAllFiles();
+                // Files cleared - no output needed since we have popup
+            });
+
+            document.getElementById('btn-add-group').addEventListener('click', () => {
+                const groupNameInput = document.getElementById('group-name-input');
+                const groupName = groupNameInput.value.trim();
+
+                if (!groupName) {
+                    // Could show a temporary message, but since we removed output panel, just return
+                    return;
+                }
+
+                const id = uploader.addGroup(groupName);
+                // Group added successfully - no output needed since we have popup
+
+                // Clear the input for next use
+                groupNameInput.value = '';
+            });
+
+            // Dialog close functionality
+            document.getElementById('files-dialog-close').addEventListener('click', () => {
+                document.getElementById('files-dialog').classList.remove('show');
+            });
+
+            // Close dialog when clicking overlay
+            document.getElementById('files-dialog').addEventListener('click', (e) => {
+                if (e.target.id === 'files-dialog') {
+                    document.getElementById('files-dialog').classList.remove('show');
+                }
+            });
+
+            // Close dialog with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && document.getElementById('files-dialog').classList.contains('show')) {
+                    document.getElementById('files-dialog').classList.remove('show');
+                }
+            });
+
+            // Listen to events and log them
+            ['file-added', 'file-removed', 'file-moved', 'description-updated', 'files-cleared', 'files-set']
+                .forEach(evt =>
+                    uploader.addEventListener(evt, e => {
+                        console.log(`${evt}:`, e.detail);
+                        // Events are logged to console - no output panel needed
+                    })
+                );
+        });
+    </script>
+</body>
+
+</html>
