@@ -29,6 +29,7 @@
         }
 
         .hero {
+            position: relative;
             text-align: center;
             color: white;
             padding: 60px 20px 30px;
@@ -36,6 +37,20 @@
             border-radius: 20px;
             margin-bottom: 40px;
             backdrop-filter: blur(10px);
+        }
+
+        .github-link {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            transition: opacity 0.3s;
+        }
+
+        .github-link:hover {
+            opacity: 0.8;
         }
 
         .hero .logo {
@@ -68,7 +83,7 @@
         }
 
         .component-header h1 {
-            background: blanchedalmond;
+            background: #dce7e5;
             color: chocolate;
             margin-bottom: 10px;
         }
@@ -707,8 +722,13 @@
 <body>
     <div class="container">
         <div class="hero">
+            <a href="https://github.com/rykc" class="github-link" target="_blank" rel="noopener noreferrer">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
             <div class="logo"></div>
-            <p>Kiko Uploader makes uploading and sorting PDF, JPG and PNG files with ease.</p>
+            <p>Kiko Uploader makes uploading and sorting files with ease (PDF, JPG and PNG)</p>
         </div>
 
         <div class="demo-section">
@@ -716,14 +736,14 @@
             <div class="feature-grid">
                 <div class="feature-card">
                     <span class="feature-icon">📁</span>
-                    <h3>File Upload</h3>
-                    <p>Drag and drop PDF, JPG, and PNG files or click to browse.</p>
+                    <h3>Hierarchical Folders</h3>
+                    <p>Nested folder organization with container folders and custom widths.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">🖼️</span>
-                    <h3>Thumbnail Generation</h3>
-                    <p>Automatic thumbnail generation from PDFs and images.</p>
+                    <span class="feature-icon">🔒</span>
+                    <h3>Single Folder Mode</h3>
+                    <p>Restrict files to one folder at a time with custom hints.</p>
                 </div>
 
                 <div class="feature-card">
@@ -735,13 +755,13 @@
                 <div class="feature-card">
                     <span class="feature-icon">✏️</span>
                     <h3>Description Editing</h3>
-                    <p>Add and edit descriptions for each uploaded file.</p>
+                    <p>Add and edit descriptions for each uploaded file with length limits.</p>
                 </div>
 
                 <div class="feature-card">
                     <span class="feature-icon">🎨</span>
                     <h3>Customizable UI</h3>
-                    <p>Customize colors, dimensions, and display options.</p>
+                    <p>Customize colors, display options, and visual hints.</p>
 
                 </div>
 
@@ -755,9 +775,9 @@
             <div class="demo-component">
                 <div class="component-header">
                     <h1>
-                        <div class="avatar"></div>Kiko demo~
+                        <div class="avatar"></div>Kiko demo 1~
                     </h1>
-                    <p>Let's explore Kiko features!</p>
+                    <p>Let's explore Kiko basic features!</p>
                 </div>
 
                 <!--<div class="feature-controls">
@@ -807,12 +827,69 @@
                     </div>
                 </div>//-->
 
-                <kiko-uploader id="uploader" max-width="200" max-height="280" show-filename="true"
-                    show-filesize="true" show-file-list="true" uploader-bg-color="#f0f8ff"
-                    uploader-border-color="#4285f4" max-desc-length="200"
+                <kiko-uploader id="uploader" 
+                    show-filename="true"
+                    show-filesize="true"
+                    show-file-list="true"
+                    uploader-bg-color="#f0f8ff"
+                    uploader-border-color="#4285f4"
+                    max-desc-length="200"
                     groups='[{"id":"group-1","name":"Group 1","order":0},{"id":"group-2","name":"Group 2","order":1}]'>
                 </kiko-uploader>
 
+            </div>
+
+            <div class="demo-component">
+                <div class="component-header">
+                    <h1>
+                        <div class="avatar"></div>Kiko demo 2~
+                    </h1>
+                    <p>Let's explore Kiko nested folder mode features!</p>
+                </div>
+
+                <kiko-uploader
+                    show-filename="true"
+                    show-filesize="true"
+                    uploader-bg-color="#fff3cd"
+                    uploader-border-color="#ffc107"
+                    max-desc-length="150"
+                    groups='[
+                        {"id":"projects","name":"Projects","order":0,"has-file":0,"groups":[
+                            {"id":"web","name":"Web Development","order":0,"width":"50%"},
+                            {"id":"mobile","name":"Mobile Apps","order":1,"width":"50%"}
+                        ]},
+                        {"id":"documents","name":"Documents","order":1,"width":"100%"},
+                        {"id":"media","name":"Media","order":2,"has-file":0,"groups":[
+                            {"id":"images","name":"Images","order":0},
+                            {"id":"videos","name":"Videos","order":1}
+                        ]}
+                    ]'>
+                </kiko-uploader>
+            </div>
+
+            <div class="demo-component">
+                <div class="component-header">
+                    <h1>
+                        <div class="avatar"></div>Kiko demo 3~
+                    </h1>
+                    <p>Let's explore Kiko single folder mode features!</p>
+                </div>
+
+                <kiko-uploader
+                    show-filename="true"
+                    show-filesize="true"
+                    show-file-list="true"
+                    uploader-bg-color="#e8f5e8"
+                    uploader-border-color="#4caf50"
+                    single-folder-mode="true"
+                    single-folder-hint="📁 Single folder mode: Files can only be in one folder at a time"
+                    max-desc-length="100"
+                    groups='[
+                        {"id":"work","name":"Work Files","order":0},
+                        {"id":"personal","name":"Personal","order":1},
+                        {"id":"archive","name":"Archive","order":2}
+                    ]'>
+                </kiko-uploader>
             </div>
         </div>
 
@@ -820,6 +897,82 @@
             <div class="section-header">
                 <h2>🔧 Kiko API</h2>
                 <p>Access and control the component through JavaScript</p>
+            </div>
+
+            <div class="api-section">
+                <h3>Attributes</h3>
+
+                <div class="api-item">
+                    <h4>show-filename</h4>
+                    <p>Show/hide filename display on thumbnails. Default: false</p>
+                    <div class="method-signature">
+                        show-filename="true"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>show-filesize</h4>
+                    <p>Show/hide file size display on thumbnails. Default: false</p>
+                    <div class="method-signature">
+                        show-filesize="true"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>show-file-list</h4>
+                    <p>Show/hide the detailed file list table. Default: false</p>
+                    <div class="method-signature">
+                        show-file-list="true"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>uploader-bg-color</h4>
+                    <p>Background color of the upload area. Default: #fafafa</p>
+                    <div class="method-signature">
+                        uploader-bg-color="#f0f8ff"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>uploader-border-color</h4>
+                    <p>Border color of the upload area. Default: #ccc</p>
+                    <div class="method-signature">
+                        uploader-border-color="#4285f4"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>max-desc-length</h4>
+                    <p>Maximum character limit for file descriptions. 0 = unlimited. Default: 0</p>
+                    <div class="method-signature">
+                        max-desc-length="200"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>single-folder-mode</h4>
+                    <p>Allow files in only one top-level folder at a time. Default: false</p>
+                    <div class="method-signature">
+                        single-folder-mode="true"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>single-folder-hint</h4>
+                    <p>Custom hint text for single folder mode.</p>
+                    <div class="method-signature">
+                        single-folder-hint="Custom hint message"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>groups</h4>
+                    <p>JSON string defining folder structure with nested groups.</p>
+                    <div class="method-signature">
+                        groups='[{"id":"g1","name":"Group 1","has-file":0,"groups":[...]}]'
+                    </div>
+                </div>
             </div>
 
             <div class="api-section">
@@ -839,6 +992,14 @@
                     <p>Programmatically set files in the uploader.</p>
                     <div class="method-signature">
                         uploader.setUploadedFiles([{file, group?, thumbnail?, description?}])
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>setGroups(groups)</h4>
+                    <p>Set the groups configuration programmatically.</p>
+                    <div class="method-signature">
+                        uploader.setGroups([{id, name, order?, width?, "has-file"?, groups?}])
                     </div>
                 </div>
 
@@ -863,6 +1024,42 @@
                     <p>Remove all uploaded files.</p>
                     <div class="method-signature">
                         uploader.clearAllFiles()
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-section">
+                <h3>Group Configuration</h3>
+                <p>Groups support hierarchical organization with the following properties:</p>
+                
+                <div class="api-item">
+                    <h4>Basic Group</h4>
+                    <div class="method-signature">
+                        {"id": "unique-id", "name": "Display Name", "order": 0}
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>Container Group (no files)</h4>
+                    <div class="method-signature">
+                        {"id": "container", "name": "Container", "has-file": 0, "groups": [...]}
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>Custom Width Group</h4>
+                    <div class="method-signature">
+                        {"id": "wide", "name": "Wide Group", "width": "50%"}
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>Nested Groups Example</h4>
+                    <div class="method-signature">
+                        {"id": "projects", "name": "Projects", "has-file": 0, "groups": [
+                          {"id": "web", "name": "Web Dev", "width": "50%"},
+                          {"id": "mobile", "name": "Mobile", "width": "50%"}
+                        ]}
                     </div>
                 </div>
             </div>
@@ -927,11 +1124,12 @@
 &lt;/head&gt;
 &lt;body&gt;
     &lt;kiko-uploader
-        max-width="200"
-        max-height="280"
         show-filename="true"
         show-filesize="true"
-        show-file-list="true" 
+        show-file-list="true"
+        uploader-bg-color="#f0f8ff"
+        uploader-border-color="#4285f4"
+        max-desc-length="200"
         groups='[{"id":"docs","name":"Documents","order":0}]'
     &gt;&lt;/kiko-uploader&gt;
 &lt;/body&gt;
@@ -956,6 +1154,18 @@ uploader.addEventListener('file-added', (event) => {
 
 // Add a group programmatically
 uploader.addGroup('New Group');
+
+// Set groups programmatically
+uploader.setGroups([
+    {id: 'work', name: 'Work Files', order: 0},
+    {id: 'personal', name: 'Personal', order: 1}
+]);
+
+// Remove a group
+uploader.removeGroup('groupId');
+
+// Clear all files
+uploader.clearAllFiles();
                     </div>
                 </div>
 
@@ -1021,18 +1231,32 @@ function KikoUploaderApp() {
         uploaderRef.current.addGroup('New Group');
     };
 
+    const clearFiles = () => {
+        uploaderRef.current.clearAllFiles();
+    };
+
+    const setGroups = () => {
+        uploaderRef.current.setGroups([
+            {id: 'docs', name: 'Documents', order: 0},
+            {id: 'images', name: 'Images', order: 1}
+        ]);
+    };
+
     return (
         &lt;div&gt;
             &lt;kiko-uploader
                 ref={uploaderRef}
-                max-width="200"
-                max-height="280"
                 show-filename="true"
+                show-filesize="true"
+                uploader-bg-color="#f0f8ff"
+                uploader-border-color="#4285f4"
                 groups='[{"id":"docs","name":"Documents"}]'
             /&gt;
 
             &lt;button onClick={getFiles}&gt;Get Files&lt;/button&gt;
             &lt;button onClick={addGroup}&gt;Add Group&lt;/button&gt;
+            &lt;button onClick={clearFiles}&gt;Clear Files&lt;/button&gt;
+            &lt;button onClick={setGroups}&gt;Set Groups&lt;/button&gt;
         &lt;/div&gt;
     );
 }
@@ -1268,10 +1492,10 @@ function KikoUploaderRedux() {
 
             &lt;kiko-uploader
                 ref={uploaderRef}
-                max-width="200"
-                max-height="280"
                 show-filename="true"
                 show-filesize="true"
+                uploader-bg-color="#e8f5e8"
+                uploader-border-color="#4caf50"
                 groups={JSON.stringify(groups)}
             /&gt;
         &lt;/div&gt;
@@ -1323,14 +1547,17 @@ export default App;
     &lt;div&gt;
         &lt;kiko-uploader
             ref="uploader"
-            max-width="200"
-            max-height="280"
             show-filename="true"
+            show-filesize="true"
+            uploader-bg-color="#fff3cd"
+            uploader-border-color="#ffc107"
             @file-added="onFileAdded"
         /&gt;
 
         &lt;button @click="getFiles"&gt;Get Files&lt;/button&gt;
         &lt;button @click="addGroup"&gt;Add Group&lt;/button&gt;
+        &lt;button @click="clearFiles"&gt;Clear Files&lt;/button&gt;
+        &lt;button @click="setGroups"&gt;Set Groups&lt;/button&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
@@ -1351,6 +1578,15 @@ export default {
         },
         addGroup() {
             this.$refs.uploader.addGroup('New Group');
+        },
+        clearFiles() {
+            this.$refs.uploader.clearAllFiles();
+        },
+        setGroups() {
+            this.$refs.uploader.setGroups([
+                {id: 'work', name: 'Work', order: 0},
+                {id: 'personal', name: 'Personal', order: 1}
+            ]);
         }
     }
 }
@@ -1373,14 +1609,17 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
     template: `
         &lt;kiko-uploader
             #uploader
-            max-width="200"
-            max-height="280"
             show-filename="true"
+            show-filesize="true"
+            uploader-bg-color="#e3f2fd"
+            uploader-border-color="#2196f3"
             (file-added)="onFileAdded($event)"
         &gt;&lt;/kiko-uploader&gt;
 
         &lt;button (click)="getFiles()"&gt;Get Files&lt;/button&gt;
         &lt;button (click)="addGroup()"&gt;Add Group&lt;/button&gt;
+        &lt;button (click)="clearFiles()"&gt;Clear Files&lt;/button&gt;
+        &lt;button (click)="setGroups()"&gt;Set Groups&lt;/button&gt;
     `
 })
 export class KikoUploaderComponent {
@@ -1401,6 +1640,17 @@ export class KikoUploaderComponent {
 
     addGroup() {
         this.uploader.nativeElement.addGroup('New Group');
+    }
+
+    clearFiles() {
+        this.uploader.nativeElement.clearAllFiles();
+    }
+
+    setGroups() {
+        this.uploader.nativeElement.setGroups([
+            {id: 'docs', name: 'Documents', order: 0},
+            {id: 'media', name: 'Media', order: 1}
+        ]);
     }
 }
                     </div>

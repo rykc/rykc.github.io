@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kiko Uploader Example</title>
+    <script src="kiko-uploader.js"></script>
+    <style>
+        #container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .top-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 40px 0;
+            justify-content: center;
+        }
+
+        .top-buttons label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s;
+            flex: 1;
+            padding: 1rem;
+            max-width: 300px;
+        }
+
+        .top-buttons input[type="radio"] {
+            display: none;
+        }
+
+        .top-buttons input[type="radio"]:checked+label {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .top-buttons label:hover {
+            background-color: #e0e0e0;
+        }
+
+        .top-buttons input[type="radio"]:checked+label:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Buttons -->
+    <div class="top-buttons">
+        <input type="radio" id="annual-report" name="report-type" checked>
+        <label for="annual-report">📊 年度工作報告</label>
+        <input type="radio" id="other-reports" name="report-type">
+        <label for="other-reports">💼 其他工作報告／通訊</label>
+    </div>
+
+    <!-- Uploader Component -->
+    <div id="container">
+        <kiko-uploader show-filename="true" show-filesize="true" show-file-list="true" single-folder-mode="true"
+            single-folder-hint="上傳檔案後，請將檔案放入其中一個資料夾中，否則檔案將不會被儲存。" groups='[
+                {"id":"group-1","name":"只備中文版本","order":0,"width":"33%"},
+                {"id":"group-2","name":"只備英文版本","order":1,"width":"33%"},
+                {"id":"group-3","name":"中英文雙語版本","order":2,"width":"34%"},
+                {"id":"group-4","name":"中文、英文版本分開檔案","order":4,"width":"100%","has-file":0,"groups":[
+                    {"id":"group-4-1","name":"中文文件","order":0,"width":"50%"},
+                    {"id":"group-4-2","name":"英文文件","order":1,"width":"50%"}
+                ]}
+            ]'></kiko-uploader>
+    </div>
+</body>
+
+</html>
