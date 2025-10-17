@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kiko Uploader - PDF, JPG & PNG File Upload Demo</title>
-    <script src="kiko-uploader.min.js"></script>
+    <script src="https://rykc.github.io/kiko-uploader/kiko-uploader.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -743,7 +743,7 @@
                 <div class="feature-card">
                     <span class="feature-icon">🔒</span>
                     <h3>Single Folder Mode</h3>
-                    <p>Restrict files to one folder at a time with custom hints.</p>
+                    <p>Restrict files to one folder at a time with custom hints (global or per-group).</p>
                 </div>
 
                 <div class="feature-card">
@@ -755,20 +755,49 @@
                 <div class="feature-card">
                     <span class="feature-icon">✏️</span>
                     <h3>Description Editing</h3>
-                    <p>Add and edit descriptions for each uploaded file with length limits.</p>
+                    <p>Add and edit descriptions for each uploaded file with length limits and tooltips.</p>
                 </div>
 
                 <div class="feature-card">
                     <span class="feature-icon">🎨</span>
                     <h3>Customizable UI</h3>
                     <p>Customize colors, display options, and visual hints.</p>
-
                 </div>
 
                 <div class="feature-card">
                     <span class="feature-icon">⚙️</span>
                     <h3>Programmatic Control</h3>
                     <p>Full JavaScript API for getting files, setting files, and managing groups.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🔍</span>
+                    <h3>File Viewer</h3>
+                    <p>Built-in PDF and image viewer with full-screen display.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📏</span>
+                    <h3>Thumbnail Controls</h3>
+                    <p>Adjustable thumbnail sizes with real-time zoom slider.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">💬</span>
+                    <h3>Interactive Tooltips</h3>
+                    <p>Hover tooltips showing file descriptions with rich formatting.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3>Detailed File List</h3>
+                    <p>Comprehensive table view with file metadata and organization info.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3>Advanced Configurations</h3>
+                    <p>Container folders, custom widths, default expand states, and nested hierarchies.</p>
                 </div>
             </div>
 
@@ -857,9 +886,9 @@
                         {"id":"projects","name":"Projects","order":0,"has-file":0,"groups":[
                             {"id":"web","name":"Web Development","order":0,"width":"50%"},
                             {"id":"mobile","name":"Mobile Apps","order":1,"width":"50%"}
-                        ]},
-                        {"id":"documents","name":"Documents","order":1,"width":"100%"},
-                        {"id":"media","name":"Media","order":2,"has-file":0,"groups":[
+                        ], "width":"100%"},
+                        {"id":"documents","name":"Documents","order":1,"width":"60%"},
+                        {"id":"media","name":"Media","order":2,"width":"40%","has-file":0,"groups":[
                             {"id":"images","name":"Images","order":0},
                             {"id":"videos","name":"Videos","order":1}
                         ]}
@@ -885,9 +914,30 @@
                     single-folder-hint="📁 Single folder mode: Files can only be in one folder at a time"
                     max-desc-length="100"
                     groups='[
-                        {"id":"work","name":"Work Files","order":0},
-                        {"id":"personal","name":"Personal","order":1},
-                        {"id":"archive","name":"Archive","order":2}
+                        {"id":"work","name":"Work Files","order":0,"width":"33%"},
+                        {"id":"personal","name":"Personal","order":1,"width":"33%"},
+                        {"id":"archive","name":"Archive","order":2,"width":"33%"}
+                    ]'>
+                </kiko-uploader>
+            </div>
+
+            <div class="demo-component">
+                <div class="component-header">
+                    <h1>
+                        <div class="avatar"></div>Kiko demo 4~
+                    </h1>
+                    <p>Let's explore Kiko advanced features: thumbnail sizing, file viewer, and tooltips!</p>
+                </div>
+
+                <kiko-uploader
+                    show-filename="true"
+                    show-filesize="true"
+                    uploader-bg-color="#f3e5f5"
+                    uploader-border-color="#9c27b0"
+                    max-desc-length="300"
+                    groups='[
+                        {"id":"documents","name":"Documents","order":0,"width":"60%"},
+                        {"id":"images","name":"Images","order":1,"width":"40%"}
                     ]'>
                 </kiko-uploader>
             </div>
@@ -973,6 +1023,14 @@
                         groups='[{"id":"g1","name":"Group 1","has-file":0,"groups":[...]}]'
                     </div>
                 </div>
+
+                <div class="api-item">
+                    <h4>default-expand</h4>
+                    <p>Whether groups should be expanded by default. Default: true</p>
+                    <div class="method-signature">
+                        default-expand="false"
+                    </div>
+                </div>
             </div>
 
             <div class="api-section">
@@ -1054,12 +1112,33 @@
                 </div>
 
                 <div class="api-item">
+                    <h4>Default Expand Control</h4>
+                    <div class="method-signature">
+                        {"id": "collapsed", "name": "Collapsed Group", "default-expand": false}
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>Per-Group Single Folder Mode</h4>
+                    <div class="method-signature">
+                        {"id": "single", "name": "Single Mode Group", "single-folder-mode": "true", "single-folder-hint": "Custom hint"}
+                    </div>
+                </div>
+
+                <div class="api-item">
                     <h4>Nested Groups Example</h4>
                     <div class="method-signature">
                         {"id": "projects", "name": "Projects", "has-file": 0, "groups": [
                           {"id": "web", "name": "Web Dev", "width": "50%"},
                           {"id": "mobile", "name": "Mobile", "width": "50%"}
                         ]}
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>Advanced Group Example</h4>
+                    <div class="method-signature">
+                        {"id": "advanced", "name": "Advanced Group", "order": 0, "width": "100%", "has-file": 1, "default-expand": true, "single-folder-mode": "false", "groups": []}
                     </div>
                 </div>
             </div>
@@ -1130,7 +1209,15 @@
         uploader-bg-color="#f0f8ff"
         uploader-border-color="#4285f4"
         max-desc-length="200"
-        groups='[{"id":"docs","name":"Documents","order":0}]'
+        single-folder-mode="true"
+        single-folder-hint="Files can only be in one top-level folder"
+        groups='[
+            {"id":"docs","name":"Documents","order":0,"width":"60%"},
+            {"id":"media","name":"Media","order":1,"width":"40%","has-file":0,"groups":[
+                {"id":"images","name":"Images","order":0},
+                {"id":"videos","name":"Videos","order":1,"default-expand":false}
+            ]}
+        ]'
     &gt;&lt;/kiko-uploader&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -1142,23 +1229,46 @@
                     <div class="code-block">
 const uploader = document.querySelector('kiko-uploader');
 
-// Get uploaded files
+// Get uploaded files with full metadata
 const files = uploader.getUploadedFiles();
 console.log('Uploaded files:', files);
 
-// Listen to events
+// Listen to all events
 uploader.addEventListener('file-added', (event) => {
     console.log('File added:', event.detail);
-    console.log('All files:', uploader.getUploadedFiles());
+});
+
+uploader.addEventListener('file-removed', (event) => {
+    console.log('File removed:', event.detail);
+});
+
+uploader.addEventListener('file-moved', (event) => {
+    console.log('File moved:', event.detail);
+});
+
+uploader.addEventListener('description-updated', (event) => {
+    console.log('Description updated:', event.detail);
 });
 
 // Add a group programmatically
 uploader.addGroup('New Group');
 
-// Set groups programmatically
+// Set advanced groups programmatically
 uploader.setGroups([
-    {id: 'work', name: 'Work Files', order: 0},
-    {id: 'personal', name: 'Personal', order: 1}
+    {
+        id: 'work',
+        name: 'Work Files',
+        order: 0,
+        width: '50%',
+        singleFolderMode: true,
+        singleFolderHint: 'Work files only in one folder'
+    },
+    {
+        id: 'personal',
+        name: 'Personal',
+        order: 1,
+        width: '50%'
+    }
 ]);
 
 // Remove a group
@@ -1177,20 +1287,34 @@ const sampleFiles = [
     {
         file: new File(['sample content'], 'document1.pdf', { type: 'application/pdf' }),
         group: 'Documents',
-        description: 'Important document'
+        description: 'Important quarterly report with detailed financial analysis and market trends. This document contains sensitive information.',
+        groupItemOrder: 0
+    },
+    {
+        file: new File(['sample content'], 'presentation.pptx', { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' }),
+        group: 'Documents',
+        description: 'Q4 Marketing presentation for stakeholders',
+        groupItemOrder: 1
     },
     {
         file: new File(['sample content'], 'image1.jpg', { type: 'image/jpeg' }),
         group: 'Images',
-        description: 'Sample image'
+        description: 'Product photography for the new marketing campaign',
+        groupItemOrder: 0
     },
     {
-        file: new File(['sample content'], 'report.pdf', { type: 'application/pdf' }),
-        group: 'Reports',
-        description: 'Monthly report'
+        file: new File(['sample content'], 'diagram.png', { type: 'image/png' }),
+        group: 'Images',
+        description: 'Technical architecture diagram showing system components',
+        groupItemOrder: 1
     }
 ];
+
 await uploader.setUploadedFiles(sampleFiles);
+
+// Files will be organized into groups and thumbnails will be auto-generated
+// Hover over thumbnails to see descriptions in tooltips
+// Click the eye icon to view files in the built-in viewer
                     </div>
                 </div>
             </div>
@@ -1242,6 +1366,22 @@ function KikoUploaderApp() {
         ]);
     };
 
+    const setAdvancedGroups = () => {
+        uploaderRef.current.setGroups([
+            {
+                id: 'projects',
+                name: 'Projects',
+                order: 0,
+                hasFile: 0,
+                groups: [
+                    { id: 'web', name: 'Web Development', order: 0, width: '50%' },
+                    { id: 'mobile', name: 'Mobile Apps', order: 1, width: '50%' }
+                ]
+            },
+            { id: 'documents', name: 'Documents', order: 1, width: '100%' }
+        ]);
+    };
+
     return (
         &lt;div&gt;
             &lt;kiko-uploader
@@ -1250,13 +1390,16 @@ function KikoUploaderApp() {
                 show-filesize="true"
                 uploader-bg-color="#f0f8ff"
                 uploader-border-color="#4285f4"
+                max-desc-length="300"
                 groups='[{"id":"docs","name":"Documents"}]'
             /&gt;
 
-            &lt;button onClick={getFiles}&gt;Get Files&lt;/button&gt;
-            &lt;button onClick={addGroup}&gt;Add Group&lt;/button&gt;
-            &lt;button onClick={clearFiles}&gt;Clear Files&lt;/button&gt;
-            &lt;button onClick={setGroups}&gt;Set Groups&lt;/button&gt;
+            &lt;div style={{ marginTop: '10px' }}&gt;
+                &lt;button onClick={getFiles} style={{ marginRight: '10px' }}&gt;Get Files&lt;/button&gt;
+                &lt;button onClick={addGroup} style={{ marginRight: '10px' }}&gt;Add Group&lt;/button&gt;
+                &lt;button onClick={setAdvancedGroups} style={{ marginRight: '10px' }}&gt;Set Advanced Groups&lt;/button&gt;
+                &lt;button onClick={clearFiles}&gt;Clear Files&lt;/button&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
     );
 }
