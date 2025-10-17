@@ -4,80 +4,155 @@
 <head>
     <meta charset="UTF-8">
     <title>Kiko Uploader Example</title>
-    <script src="kiko-uploader.js"></script>
+    <script src="https://rykc.github.io/kiko-uploader/kiko-upload.min.js"></script>
     <style>
         #container {
             max-width: 1200px;
             margin: 0 auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .top-buttons {
-            display: flex;
-            gap: 10px;
-            margin: 40px 0;
-            justify-content: center;
+        /* Tab Container Styles */
+        .tab-container {
+            margin: 20px 0;
         }
 
-        .top-buttons label {
+        .tab-buttons {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background-color: #f0f0f0;
-            color: #333;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            border-bottom: 2px solid #e1e5e9;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 15px 30px;
             cursor: pointer;
             font-size: 20px;
-            transition: background-color 0.3s;
-            flex: 1;
-            padding: 1rem;
-            max-width: 300px;
+            font-weight: bold;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .top-buttons input[type="radio"] {
+        .tab-button:hover {
+            color: #007acc;
+            background-color: #f8f9fa;
+        }
+
+        .tab-button.active {
+            color: #007acc;
+            border-bottom-color: #007acc;
+            background-color: #f8f9fa;
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #007acc, #00bcff);
+        }
+
+        .tab-content {
             display: none;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e1e5e9;
         }
 
-        .top-buttons input[type="radio"]:checked+label {
-            background-color: #4CAF50;
-            color: white;
-            border-color: #4CAF50;
+        .tab-content.active {
+            display: block;
         }
 
-        .top-buttons label:hover {
-            background-color: #e0e0e0;
+        .tab-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
         }
 
-        .top-buttons input[type="radio"]:checked+label:hover {
-            background-color: #45a049;
+        .tab-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
     </style>
 </head>
 
 <body>
-    <!-- Top Buttons -->
-    <div class="top-buttons">
-        <input type="radio" id="annual-report" name="report-type" checked>
-        <label for="annual-report">📊 年度工作報告</label>
-        <input type="radio" id="other-reports" name="report-type">
-        <label for="other-reports">💼 其他工作報告／通訊</label>
+    <div id="container">
+        <h1>Kiko Uploader Example</h1>
+        <h3>Documentation:&nbsp; <a href="https://rykc.github.io/kiko-uploader-revamp/demo.html">https://rykc.github.io/kiko-uploader-revamp/demo.html</a></h3>
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="switchTab('basic')">基本使用</button>
+                <button class="tab-button" onclick="switchTab('advanced')">進階使用 (單層 folder 分類)</button>
+                <button class="tab-button" onclick="switchTab('complicated')">複雜使用 (Member Working Report)</button>
+            </div>
+
+            <div id="basic-tab" class="tab-content active">
+                <h2 class="tab-title">基本使用</h2>
+                <p class="tab-description">簡單的上傳及排序功能。</p>
+                <kiko-uploader id="kiko_1"></kiko-uploader>
+            </div>
+
+            <div id="advanced-tab" class="tab-content">
+                <h2 class="tab-title">進階使用</h2>
+                <p class="tab-description">進階的上傳及排序功能，支援單層資料夾分類。</p>
+                <kiko-uploader id="kiko_2" show-filename="true" show-filesize="true" groups='[{"id":"doc-1","name":"文件","order":0,"width":"75%"}]'></kiko-uploader>
+            </div>
+
+            <div id="complicated-tab" class="tab-content">
+                <h2 class="tab-title">複雜使用</h2>
+                <p class="tab-description">完整的功能設定，包括多層分類和自訂群組。</p>
+                <kiko-uploader id="kiko_3" show-filename="true" show-filesize="true" show-file-list="true" single-folder-mode="true"
+                    single-folder-hint="上傳檔案後，請將檔案放入其中一個分類項目。" groups='[
+                        {"id":"always-on-top-doc","name":"置頂文件","order":0,"width":"50%"},
+                        {"id":"annual-report","name":"年度工作報告","order":1,"width":"100%","has-file":0,"single-folder-mode":"true",
+                            "single-folder-hint":"上傳檔案後，請將檔案放入其中一個紫色或多個橙色資料夾中。",
+                            "groups":[
+                                {"id":"group-1","name":"只備中文版本","order":0,"width":"30%"},
+                                {"id":"group-4","name":"中文、英文版本分開檔案","order":1,"width":"70%","has-file":0,"groups":[
+                                    {"id":"group-4-1","name":"中文文件","order":0,"width":"50%"},
+                                    {"id":"group-4-2","name":"英文文件","order":1,"width":"50%"}
+                                ]},
+                                {"id":"group-2","name":"只備英文版本","order":2,"width":"50%"},
+                                {"id":"group-3","name":"中英文雙語版本","order":3,"width":"50%"}
+                        ], "default-expand":"false"},
+                        {"id":"other-reports","name":"其他工作報告／通訊","order":2,"width":"100%","has-file":0,"single-folder-mode":"true",
+                            "single-folder-hint":"上傳檔案後，請將檔案放入其中一個紫色或多個橙色資料夾中。",
+                            "groups":[
+                                {"id":"group-5","name":"只備中文版本","order":0,"width":"30%"},
+                                {"id":"group-6","name":"中文、英文版本分開檔案","order":1,"width":"70%","has-file":0,"groups":[
+                                    {"id":"group-6-1","name":"中文文件","order":0,"width":"50%"},
+                                    {"id":"group-6-2","name":"英文文件","order":1,"width":"50%"}
+                                ]},
+                                {"id":"group-7","name":"只備英文版本","order":2,"width":"50%"},
+                                {"id":"group-8","name":"中英文雙語版本","order":3,"width":"50%"}
+                        ], "default-expand":"false"}
+                    ]'></kiko-uploader>
+            </div>
+        </div>
     </div>
 
-    <!-- Uploader Component -->
-    <div id="container">
-        <kiko-uploader show-filename="true" show-filesize="true" show-file-list="true" single-folder-mode="true"
-            single-folder-hint="上傳檔案後，請將檔案放入其中一個資料夾中，否則檔案將不會被儲存。" groups='[
-                {"id":"group-1","name":"只備中文版本","order":0,"width":"33%"},
-                {"id":"group-2","name":"只備英文版本","order":1,"width":"33%"},
-                {"id":"group-3","name":"中英文雙語版本","order":2,"width":"34%"},
-                {"id":"group-4","name":"中文、英文版本分開檔案","order":4,"width":"100%","has-file":0,"groups":[
-                    {"id":"group-4-1","name":"中文文件","order":0,"width":"50%"},
-                    {"id":"group-4-2","name":"英文文件","order":1,"width":"50%"}
-                ]}
-            ]'></kiko-uploader>
-    </div>
+    <script>
+        function switchTab(tabName) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 
 </html>
