@@ -72,6 +72,7 @@
             opacity: 0.9;
             max-width: 880px;
             margin: 0 auto;
+            line-height: 1.6;
         }
 
         .demo-section {
@@ -430,6 +431,7 @@
             text-align: center;
             padding: 0px 20px 40px;
             opacity: 0.8;
+            color: white;
         }
 
         /* Dialog Styles */
@@ -859,74 +861,92 @@
             <div class="feature-grid">
                 <div class="feature-card">
                     <span class="feature-icon">📁</span>
-                    <h3>Hierarchical Folders</h3>
-                    <p>Nested folder organization with container folders and custom widths.</p>
+                    <h3>Folders</h3>
+                    <p>Unlimited nested folder organization with container folders, tab-mode display, and custom widths for flexible layouts.</p>
                 </div>
 
                 <div class="feature-card">
                     <span class="feature-icon">🔒</span>
-                    <h3>Single Folder Mode</h3>
-                    <p>Restrict files to one folder at a time with custom hints (global or per-group).</p>
+                    <h3>Single Folder</h3>
+                    <p>Restrict files to one folder at a time with custom hints (global or per-group), perfect for enforcing organization rules.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">📋</span>
-                    <h3>Custom Sorting</h3>
-                    <p>Organize files into custom groups with drag-and-drop reordering.</p>
+                    <span class="feature-icon">🎯</span>
+                    <h3>DnD Sorting</h3>
+                    <p>Organize files with intuitive drag-and-drop between folders at any hierarchy level, with automatic reordering.</p>
                 </div>
 
                 <div class="feature-card">
                     <span class="feature-icon">✏️</span>
-                    <h3>Description Editing</h3>
-                    <p>Add and edit descriptions for each uploaded file with length limits and tooltips.</p>
+                    <h3>Dual Description</h3>
+                    <p>Add two separate description fields per file with custom labels, placeholders, character limits, and real-time validation.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🌐</span>
+                    <h3>Multi-Language</h3>
+                    <p>Built-in support for English, Traditional Chinese, Simplified Chinese, Japanese, and Korean with easy language switching.</p>
                 </div>
 
                 <div class="feature-card">
                     <span class="feature-icon">🎨</span>
                     <h3>UI Customization</h3>
-                    <p>Customize text color, hover effects, menu backgrounds, and full-width layouts.</p>
+                    <p>Customize colors, backgrounds, text, hover effects, menu styles, and layout modes (horizontal/vertical) to match your design.</p>
                 </div>
 
                 <div class="feature-card">
                     <span class="feature-icon">📦</span>
-                    <h3>ZIP Download</h3>
-                    <p>Download all uploaded files organized in folders as a ZIP archive.</p>
+                    <h3>Smart ZIP Export</h3>
+                    <p>Download all files as ZIP with folder structure preserved, including server-backed files with automatic fetching.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">🌐</span>
+                    <span class="feature-icon">🖥️</span>
                     <h3>Server Integration</h3>
-                    <p>Load and manage server-backed files with thumbnails, URLs, and metadata.</p>
+                    <p>Full server file support with file IDs, URLs, thumbnail URLs, metadata tracking, and deletion tracking for sync.</p>
                 </div>
 
                 <div class="feature-card">
                     <span class="feature-icon">📄</span>
                     <h3>Card View Mode</h3>
-                    <p>Switch between thumbnail and detailed card view for better file organization.</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">📏</span>
-                    <h3>File Size Limits</h3>
-                    <p>Set per-file and total upload size limits with visual feedback.</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">📝</span>
-                    <h3>Custom Descriptions</h3>
-                    <p>Configure custom labels and placeholders for description fields.</p>
+                    <p>Toggle between compact thumbnail view and detailed card view with expanded descriptions and file information.</p>
                 </div>
 
                 <div class="feature-card">
                     <span class="feature-icon">⚡</span>
-                    <h3>Event Listeners</h3>
-                    <p>Rich event system for seamless integration with custom logic and state management.</p>
+                    <h3>Rich Events API</h3>
+                    <p>Complete event system: file-added, file-removed, file-moved, description-updated, files-cleared, ready, dirty state tracking.</p>
                 </div>
 
                 <div class="feature-card">
                     <span class="feature-icon">👁️</span>
-                    <h3>Built-in File Viewer</h3>
-                    <p>Preview uploaded files directly in the browser with built-in viewer.</p>
+                    <h3>Built-in Viewer</h3>
+                    <p>Preview PDFs and images directly in browser with responsive full-screen viewer supporting both local and server files.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🔄</span>
+                    <h3>Dirty Tracking</h3>
+                    <p>Automatic detection of unsaved changes with markAsClean() API and dirty event dispatching for form integration.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🎭</span>
+                    <h3>Tab Mode Display</h3>
+                    <p>Display folders as tabs at component or group level with active state management and nested tab support.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🎈</span>
+                    <h3>Programmatic API</h3>
+                    <p>Comprehensive API for file management, group operations, defaults, size limits, and asynchronous initialization handling.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">💡</span>
+                    <h3>Smart Tooltips</h3>
+                    <p>Hover tooltips showing descriptions with Tippy.js integration, formatted multi-line text, and automatic updates.</p>
                 </div>
             </div>
 
@@ -993,7 +1013,7 @@
                     uploader-bg-color="#f0f8ff"
                     uploader-border-color="#4285f4"
                     max-desc-length="200"
-                    groups='[{"id":"group-1","name":"Group 1","order":0},{"id":"group-2","name":"Group 2","order":1}]'>
+                    groups='[{"id":"group-1","name":"Group 1","order":0,"width":"50%"},{"id":"group-2","name":"Group 2","order":1,"width":"50%"}]'>
                 </kiko-uploader>
 
             </div>
@@ -1009,16 +1029,15 @@
                 <kiko-uploader
                     show-filename="true"
                     show-filesize="true"
-                    uploader-bg-color="#fff3cd"
-                    uploader-border-color="#ffc107"
+                    uploader-bg-color="#f3e5f5"
+                    uploader-border-color="#9c27b0"
                     max-desc-length="150"
                     groups='[
-                        {"id":"projects","name":"Projects","order":0,"has-file":0,"groups":[
+                        {"id":"projects","name":"Projects (Able to contain files itself)","order":0,"width":"50%","groups":[
                             {"id":"web","name":"Web Development","order":0,"width":"50%"},
                             {"id":"mobile","name":"Mobile Apps","order":1,"width":"50%"}
-                        ], "width":"100%"},
-                        {"id":"documents","name":"Documents","order":1,"width":"60%"},
-                        {"id":"media","name":"Media","order":2,"width":"40%","has-file":0,"groups":[
+                        ]},
+                        {"id":"media","name":"Media","order":1,"width":"50%","has-file":0,"groups":[
                             {"id":"images","name":"Images","order":0,"width":"50%"},
                             {"id":"videos","name":"Videos","order":1,"width":"50%"}
                         ]}
@@ -1031,35 +1050,10 @@
                     <h1>
                         <div class="avatar"></div>Kiko demo 3~
                     </h1>
-                    <p>Let's explore Kiko single folder mode features!</p>
+                    <p>Let's explore Kiko advanced features: complex nested folders, custom descriptions and single folder mode!</p>
                 </div>
 
-                <kiko-uploader
-                    show-filename="true"
-                    show-filesize="true"
-                    show-file-list="true"
-                    uploader-bg-color="#e8f5e8"
-                    uploader-border-color="#4caf50"
-                    single-folder-mode="true"
-                    single-folder-hint="📁 Single folder mode: Files can only be in one folder at a time"
-                    max-desc-length="100"
-                    groups='[
-                        {"id":"work","name":"Work Files","order":0,"width":"33%"},
-                        {"id":"personal","name":"Personal","order":1,"width":"33%"},
-                        {"id":"archive","name":"Archive","order":2,"width":"33%"}
-                    ]'>
-                </kiko-uploader>
-            </div>
-
-            <div class="demo-component">
-                <div class="component-header">
-                    <h1>
-                        <div class="avatar"></div>Kiko demo 4~
-                    </h1>
-                    <p>Let's explore Kiko advanced features: complex nested folders, custom descriptions, single folder mode, and server integration!</p>
-                </div>
-
-                <kiko-uploader id="demo4-uploader"
+                <kiko-uploader id="demo3-uploader"
                     full-width="true"
                     uploader-menu-background="linear-gradient(135deg, #ffc107 0%, #ff8f00 100%)"
                     uploader-bg-color="#fff3cd"
@@ -1071,8 +1065,8 @@
                     show-file-list="true"
                     max-desc-length="300"
                     descriptions='{
-                        "desc1": {"label": "Document Title", "placeholder": "Enter document title..."},
-                        "desc2": {"label": "Description", "placeholder": "Enter detailed description..."}
+                        "desc1": {"label": "Custom Document Title", "placeholder": "Enter document title..."},
+                        "desc2": {"label": "Custom Description", "placeholder": "Enter detailed description..."}
                     }'
                     groups='[
                         {"id":"pinned-docs","name":"📌 Pinned Documents","order":0,"width":"50%", "default-expand":"false"},
@@ -1089,7 +1083,62 @@
                 </kiko-uploader>
 
                 <div class="demo-controls" style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; justify-content: center;">
-                    <button class="btn" id="demo4-get-files" style="background: #ffc107; color: #333;">📋 Show File List (JSON)</button>
+                    <button class="btn" id="demo3-get-files" style="background: #ffc107; color: #333;">📋 Show File List (JSON)</button>
+                </div>
+            </div>
+
+            <div class="demo-component">
+                <div class="component-header">
+                    <h1>
+                        <div class="avatar"></div>Kiko demo 4~
+                    </h1>
+                    <p>Advanced features showcase: card view, vertical layout, tab-mode navigation, single-folder constraints, nested groups, custom descriptions.</p>
+                </div>
+
+                <kiko-uploader id="demo4-uploader"
+                    lang="en"
+                    full-width="true"
+                    layout="vertical-250"
+                    uploader-menu-background="#d7ffcd"
+                    uploader-bg-color="#319772"
+                    uploader-bg-hover-color="#35a25a"
+                    uploader-text-color="white"
+                    show-filename="true"
+                    show-filesize="true"
+                    show-file-list="true"
+                    tab-mode="true"
+                    descriptions='{
+                        "desc1": {"label": "Project Title", "placeholder": "Enter the research project title"},
+                        "desc2": {"label": "Principal Investigator", "placeholder": "Enter the lead researcher name"}
+                    }'
+                    groups='[
+                        {"id":"research-proposals","name":"Proposals & Grants","order":1,"width":"100%","has-file":0,"single-folder-mode":"true","tab-mode":true,
+                            "single-folder-hint":"After uploading files, please place them in one of the appropriate proposal or grant folders.",
+                            "groups":[
+                                {"id":"group-1","name":"Initial Proposals","order":1,"width":"35%"},
+                                {"id":"group-2","name":"Grant Apps","order":0,"width":"65%","has-file":0,"groups":[
+                                    {"id":"group-2-1","name":"Federal","order":0,"width":"50%"},
+                                    {"id":"group-2-2","name":"Private","order":1,"width":"50%"}
+                                ]},
+                                {"id":"group-3","name":"Ethics","order":2,"width":"60%"},
+                                {"id":"group-4","name":"Budgets","order":3,"width":"40%"}
+                        ]},
+                        {"id":"data-management","name":"Data & Analysis","order":2,"width":"100%","has-file":0,"single-folder-mode":"true",
+                            "single-folder-hint":"After uploading files, please place them in the appropriate data management category.",
+                            "groups":[
+                                {"id":"group-5","name":"Raw Data","order":0,"width":"60%","has-file":0,"groups":[
+                                    {"id":"group-5-1","name":"Surveys","order":0,"width":"50%"},
+                                    {"id":"group-5-2","name":"Experiments","order":1,"width":"50%"}
+                                ]},
+                                {"id":"group-6","name":"Analysis","order":1,"width":"40%"},
+                                {"id":"group-7","name":"Models","order":2,"width":"40%"},
+                                {"id":"group-8","name":"Charts","order":3,"width":"60%"}
+                        ], "default-expand":"false"}
+                    ]'>
+                </kiko-uploader>
+
+                <div class="demo-controls" style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; justify-content: center;">
+                    <button class="btn" id="demo4-get-files" style="background: #27ae60; color: white;">📋 Show File List (JSON)</button>
                 </div>
             </div>
         </div>
@@ -1124,6 +1173,54 @@
                     <p>Show/hide the detailed file list table. Default: false</p>
                     <div class="method-signature">
                         show-file-list="true"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>show-uploader-menu</h4>
+                    <p>Show/hide the uploader menu bar with file info and controls. Default: true</p>
+                    <div class="method-signature">
+                        show-uploader-menu="false"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>uploader-border-color</h4>
+                    <p>Border color of the upload area. Default: #ccc</p>
+                    <div class="method-signature">
+                        uploader-border-color="#4285f4"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>max-desc-length</h4>
+                    <p>Maximum combined character length for description fields (0 = unlimited). Default: 0</p>
+                    <div class="method-signature">
+                        max-desc-length="500"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>lang</h4>
+                    <p>Interface language: 'en' (English), 'tc' (Traditional Chinese), 'sc' (Simplified Chinese), 'jp' (Japanese), 'ko' (Korean). Default: 'en'</p>
+                    <div class="method-signature">
+                        lang="tc"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>layout</h4>
+                    <p>Layout mode for ungrouped files and folder structure: 'horizontal' (default) or 'vertical' or 'vertical-WIDTH' (e.g., 'vertical-350').</p>
+                    <div class="method-signature">
+                        layout="vertical-400"
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>tab-mode</h4>
+                    <p>Display top-level groups as tabs instead of accordion folders. Default: false</p>
+                    <div class="method-signature">
+                        tab-mode="true"
                     </div>
                 </div>
 
@@ -1302,6 +1399,64 @@
                     </div>
                 </div>
 
+                <div class="api-item">
+                    <h4>whenReady()</h4>
+                    <p>Returns a Promise that resolves when the component is fully initialized and ready. Use this before calling API methods if initialization timing is uncertain.</p>
+                    <div class="method-signature">
+                        await uploader.whenReady()
+                        // Or: uploader.whenReady().then(() => { ... })
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>markAsClean()</h4>
+                    <p>Mark the current state as clean (no unsaved changes). Typically called after saving to server.</p>
+                    <div class="method-signature">
+                        uploader.markAsClean()
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>hasFiles()</h4>
+                    <p>Check if any files have been uploaded.</p>
+                    <div class="method-signature">
+                        const hasFiles = uploader.hasFiles() // true or false
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>getTotalFileCount()</h4>
+                    <p>Get the total number of uploaded files.</p>
+                    <div class="method-signature">
+                        const count = uploader.getTotalFileCount()
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>getTotalFileSize()</h4>
+                    <p>Get the total size of all uploaded files in bytes.</p>
+                    <div class="method-signature">
+                        const totalSize = uploader.getTotalFileSize()
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>findGroupById(groupId)</h4>
+                    <p>Find a group configuration by its ID (searches recursively through nested groups).</p>
+                    <div class="method-signature">
+                        const group = uploader.findGroupById("my-group-id")
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>countFilesInGroup(groupId)</h4>
+                    <p>Count files in a specific group and all its sub-groups recursively.</p>
+                    <div class="method-signature">
+                        const count = uploader.countFilesInGroup("my-group-id")
+                    </div>
+                </div>
+            </div>
+
             <div class="api-section">
                 <h3>Group Configuration</h3>
                 <p>Groups support hierarchical organization with the following properties:</p>
@@ -1342,6 +1497,16 @@
                 </div>
 
                 <div class="api-item">
+                    <h4>Tab Mode for Sub-groups</h4>
+                    <div class="method-signature">
+                        {"id": "tabbed", "name": "Tabbed Group", "tab-mode": true, "groups": [
+                          {"id": "tab1", "name": "Tab 1"},
+                          {"id": "tab2", "name": "Tab 2"}
+                        ]}
+                    </div>
+                </div>
+
+                <div class="api-item">
                     <h4>Nested Groups Example</h4>
                     <div class="method-signature">
                         {"id": "projects", "name": "Projects", "has-file": 0, "groups": [
@@ -1354,7 +1519,7 @@
                 <div class="api-item">
                     <h4>Advanced Group Example</h4>
                     <div class="method-signature">
-                        {"id": "advanced", "name": "Advanced Group", "order": 0, "width": "100%", "has-file": 1, "default-expand": true, "single-folder-mode": "false", "groups": []}
+                        {"id": "advanced", "name": "Advanced Group", "order": 0, "width": "100%", "has-file": 1, "default-expand": true, "single-folder-mode": "false", "tab-mode": false, "groups": []}
                     </div>
                 </div>
             </div>
@@ -1362,6 +1527,10 @@
             <div class="api-section">
                 <h3>Events</h3>
                 <div class="event-list">
+                    <div class="event-item">
+                        <h5>ready</h5>
+                        <p>Fired when component is fully initialized and ready for use.</p>
+                    </div>
                     <div class="event-item">
                         <h5>file-added</h5>
                         <p>Fired when a file is uploaded. Detail: {file, index}</p>
@@ -1376,7 +1545,7 @@
                     </div>
                     <div class="event-item">
                         <h5>description-updated</h5>
-                        <p>Fired when a file description is updated. Detail: {fileIndex, description1, description2}</p>
+                        <p>Fired when file description or name is updated. Detail: {fileIndex, description: {desc1, desc2}, fileName}</p>
                     </div>
                     <div class="event-item">
                         <h5>files-cleared</h5>
@@ -1386,6 +1555,72 @@
                         <h5>files-set</h5>
                         <p>Fired when files are set programmatically. Detail: {count}</p>
                     </div>
+                    <div class="event-item">
+                        <h5>dirty</h5>
+                        <p>Fired when file state changes (for tracking unsaved changes). Detail: {isDirty}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-section">
+                <h3>Server Integration</h3>
+                <p>Kiko Uploader supports server-backed files with comprehensive metadata tracking:</p>
+
+                <div class="api-item">
+                    <h4>Loading Server Files</h4>
+                    <p>Set files from server with file IDs, URLs, and thumbnails:</p>
+                    <div class="method-signature">
+await uploader.setUploadedFiles([
+  {
+    id: 123,                              // Server file ID (>0)
+    fileName: "document.pdf",             // Display name
+    fileURL: "https://example.com/files/document.pdf",
+    thumbnailURL: "https://example.com/thumbnails/document.jpg",
+    size: 2048576,                        // File size in bytes
+    group: "Documents",                   // Group name or ID
+    groupId: "doc-folder",                // Specific group ID
+    description1: "Annual Report",        // First description
+    description2: "Financial year 2024"   // Second description
+  },
+  // ... more files
+])
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>Tracking Deletions</h4>
+                    <p>When calling getUploadedFiles(), deleted server files are tracked:</p>
+                    <div class="method-signature">
+const result = uploader.getUploadedFiles()
+// result.files: current files
+// result.deleted: array of deleted server file IDs
+// Use result.deleted to remove files from server
+
+// After sync, mark as clean
+uploader.markAsClean()
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>Mixed Local & Server Files</h4>
+                    <p>Files with id === -1 are new/local files. Files with id > 0 are server-backed:</p>
+                    <div class="method-signature">
+const result = uploader.getUploadedFiles()
+result.files.forEach(file => {
+  if (file.id === -1) {
+    // New local file - upload to server
+    uploadToServer(file.file, file.fileName)
+  } else {
+    // Server-backed file - update metadata if changed
+    updateMetadata(file.id, file.description1, file.description2)
+  }
+})
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>ZIP Export with Server Files</h4>
+                    <p>The built-in ZIP export automatically fetches server files and includes them in the download with proper folder structure preserved.</p>
                 </div>
             </div>
         </div>
@@ -1422,6 +1657,7 @@
         show-filename="true"
         show-filesize="true"
         show-file-list="true"
+        lang="en"
         uploader-bg-color="#f0f8ff"
         uploader-border-color="#4285f4"
         uploader-text-color="#1a365d"
@@ -1429,12 +1665,13 @@
         uploader-menu-background="linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)"
         max-desc-length="200"
         full-width="true"
+        layout="vertical-350"
         single-folder-mode="true"
         single-folder-hint="Files can only be in one top-level folder"
         descriptions='{"desc1": {"label": "Title", "placeholder": "Enter file title..."}, "desc2": {"label": "Description", "placeholder": "Enter file description..."}}'
         groups='[
             {"id":"docs","name":"Documents","order":0,"width":"60%"},
-            {"id":"media","name":"Media","order":1,"width":"40%","has-file":0,"groups":[
+            {"id":"media","name":"Media","order":1,"width":"40%","has-file":0,"tab-mode":true,"groups":[
                 {"id":"images","name":"Images","order":0},
                 {"id":"videos","name":"Videos","order":1,"default-expand":false}
             ]}
@@ -1450,11 +1687,18 @@
                     <div class="code-block">
 const uploader = document.querySelector('kiko-uploader');
 
+// Wait for component to be ready
+await uploader.whenReady()
+
 // Get uploaded files with full metadata
 const files = uploader.getUploadedFiles();
 console.log('Uploaded files:', files);
 
 // Listen to all events
+uploader.addEventListener('ready', () => {
+    console.log('Component is ready')
+})
+
 uploader.addEventListener('file-added', (event) => {
     console.log('File added:', event.detail);
 });
@@ -1471,7 +1715,24 @@ uploader.addEventListener('description-updated', (event) => {
     console.log('Description updated:', event.detail);
 });
 
-// Add a group programmatically
+uploader.addEventListener('dirty', (event) => {
+    console.log('Dirty state changed:', event.detail.isDirty);
+    // Show unsaved changes indicator
+    if (event.detail.isDirty) {
+        document.getElementById('save-btn').disabled = false;
+                }
+            });
+
+            // Initialize Demo 4 uploader
+            if (demo4Uploader) {
+                demo4Uploader.whenReady().then(() => {
+                    demo4Uploader.setCardView(true); // Enable card view by default for this demo
+                    demo4Uploader.setDefaultDescriptions({
+                        desc1: 'Council Member 2025 July Key Work Focus',
+                        desc2: "Hon. Representative's Key Work Report for July 2025"
+                    });
+                });
+            }// Add a group programmatically
 uploader.addGroup('New Group');
 
 // Set advanced groups programmatically
@@ -1481,14 +1742,20 @@ uploader.setGroups([
         name: 'Work Files',
         order: 0,
         width: '50%',
-        singleFolderMode: true,
-        singleFolderHint: 'Work files only in one folder'
+        'single-folder-mode': true,
+        'single-folder-hint': 'Work files only in one folder',
+        'tab-mode': false,
+        'default-expand': true
     },
     {
         id: 'personal',
         name: 'Personal',
         order: 1,
-        width: '50%'
+        width: '50%',
+        groups: [
+            {id: 'photos', name: 'Photos', order: 0},
+            {id: 'docs', name: 'Documents', order: 1}
+        ]
     }
 ]);
 
@@ -1498,6 +1765,11 @@ uploader.setMaxTotalSize(500); // 500 MB total
 
 // Set default descriptions
 uploader.setDefaultDescriptions('Default Title', 'Default Description');
+// Or use object format:
+uploader.setDefaultDescriptions({
+    desc1: 'Default Title',
+    desc2: 'Default Description'
+});
 
 // Toggle card view
 uploader.setCardView(true); // Enable card view
@@ -1505,6 +1777,31 @@ uploader.setCardView(false); // Disable card view
 
 // Get current card view state
 const isCardView = uploader.getCardView();
+
+// Track dirty state for form integration
+let isDirty = false;
+uploader.addEventListener('dirty', (e) => {
+    isDirty = e.detail.isDirty;
+    updateSaveButton();
+});
+
+// After saving to server
+async function saveToServer() {
+    const result = uploader.getUploadedFiles();
+    
+    // Upload new files (id === -1)
+    for (const file of result.files.filter(f => f.id === -1)) {
+        await uploadNewFile(file);
+    }
+    
+    // Delete removed files from server
+    for (const deletedId of result.deleted) {
+        await deleteFromServer(deletedId);
+    }
+    
+    // Mark as clean after successful save
+    uploader.markAsClean();
+}
                     </div>
                 </div>
 
@@ -1514,10 +1811,12 @@ const isCardView = uploader.getCardView();
 // Set files programmatically (useful for loading saved state or server data)
 const sampleFiles = [
     {
+        // Local file with blob
         file: new File(['sample content'], 'document1.pdf', { type: 'application/pdf' }),
         group: 'Documents',
         description1: 'Important quarterly report',
         description2: 'Detailed financial analysis and market trends',
+        fileName: 'Q4-2024-Report.pdf',
         groupItemOrder: 0
     },
     {
@@ -1526,7 +1825,7 @@ const sampleFiles = [
         fileName: 'server-image.jpg',
         fileURL: 'https://example.com/files/image.jpg',
         thumbnailURL: 'https://example.com/thumbnails/image.jpg',
-        group: 'Images',
+        groupId: 'images',
         description1: 'Product photography',
         description2: 'For the new marketing campaign',
         size: 2048576 // 2MB
@@ -1675,6 +1974,7 @@ export const ADD_GROUP = 'ADD_GROUP';
 export const CLEAR_FILES = 'CLEAR_FILES';
 export const SET_SIZE_LIMITS = 'SET_SIZE_LIMITS';
 export const TOGGLE_CARD_VIEW = 'TOGGLE_CARD_VIEW';
+export const SET_DIRTY = 'SET_DIRTY';
 
 export const addFile = (fileData) => ({
     type: ADD_FILE,
@@ -1713,6 +2013,11 @@ export const setSizeLimits = (maxFileSize, maxTotalSize) => ({
 export const toggleCardView = () => ({
     type: TOGGLE_CARD_VIEW
 });
+
+export const setDirty = (isDirty) => ({
+    type: SET_DIRTY,
+    payload: isDirty
+});
                     </div>
                 </div>
 
@@ -1728,7 +2033,8 @@ import {
     ADD_GROUP,
     CLEAR_FILES,
     SET_SIZE_LIMITS,
-    TOGGLE_CARD_VIEW
+    TOGGLE_CARD_VIEW,
+    SET_DIRTY
 } from '../actions/kikoUploaderActions';
 
 const initialState = {
@@ -1740,7 +2046,8 @@ const initialState = {
     ],
     maxFileSize: 20,
     maxTotalSize: 100,
-    cardView: false
+    cardView: false,
+    isDirty: false
 };
 
 const kikoUploaderReducer = (state = initialState, action) => {
@@ -1803,6 +2110,17 @@ const kikoUploaderReducer = (state = initialState, action) => {
                 cardView: !state.cardView
             };
 
+        case SET_DIRTY:
+            return {
+                ...state,
+                isDirty: action.payload
+            };
+
+        default:
+            return state;
+    }
+};
+
         default:
             return state;
     }
@@ -1826,14 +2144,15 @@ import {
     addGroup,
     clearFiles,
     setSizeLimits,
-    toggleCardView
+    toggleCardView,
+    setDirty
 } from '../actions/kikoUploaderActions';
 import './kiko-uploader.min.js';
 
 function KikoUploaderRedux() {
     const uploaderRef = useRef(null);
     const dispatch = useDispatch();
-    const { files, groups, maxFileSize, maxTotalSize, cardView } = useSelector(state => state);
+    const { files, groups, maxFileSize, maxTotalSize, cardView, isDirty } = useSelector(state => state);
 
     useEffect(() => {
         const uploader = uploaderRef.current;
@@ -1854,16 +2173,23 @@ function KikoUploaderRedux() {
             dispatch(clearFiles());
         };
 
+        // Handle dirty state changes
+        const handleDirtyChange = (event) => {
+            dispatch(setDirty(event.detail.isDirty));
+        };
+
         uploader.addEventListener('file-added', handleFileAdded);
         uploader.addEventListener('file-removed', handleFileRemoved);
         uploader.addEventListener('description-updated', handleDescriptionUpdated);
         uploader.addEventListener('files-cleared', handleFilesCleared);
+        uploader.addEventListener('dirty', handleDirtyChange);
 
         return () => {
             uploader.removeEventListener('file-added', handleFileAdded);
             uploader.removeEventListener('file-removed', handleFileRemoved);
             uploader.removeEventListener('description-updated', handleDescriptionUpdated);
             uploader.removeEventListener('files-cleared', handleFilesCleared);
+            uploader.removeEventListener('dirty', handleDirtyChange);
         };
     }, [dispatch]);
 
@@ -1895,6 +2221,17 @@ function KikoUploaderRedux() {
         uploaderRef.current.setCardView(!current);
     };
 
+    const handleSave = async () => {
+        const result = uploaderRef.current.getUploadedFiles();
+        
+        // Simulate saving to server
+        console.log('Saving files to server:', result);
+        
+        // After successful save, mark as clean
+        uploaderRef.current.markAsClean();
+        dispatch(setDirty(false));
+    };
+
     return (
         &lt;div&gt;
             &lt;h3&gt;Redux State&lt;/h3&gt;
@@ -1903,6 +2240,9 @@ function KikoUploaderRedux() {
             &lt;p&gt;Max File Size: {maxFileSize}MB&lt;/p&gt;
             &lt;p&gt;Max Total Size: {maxTotalSize}MB&lt;/p&gt;
             &lt;p&gt;Card View: {cardView ? 'Enabled' : 'Disabled'}&lt;/p&gt;
+            &lt;p style={{ color: isDirty ? 'red' : 'green', fontWeight: 'bold' }}&gt;
+                {isDirty ? '⚠️ Unsaved Changes' : '✓ All changes saved'}
+            &lt;/p&gt;
 
             &lt;div style={{ marginBottom: '20px' }}&gt;
                 &lt;button onClick={handleGetFiles} style={{ marginRight: '10px' }}&gt;
@@ -1916,6 +2256,17 @@ function KikoUploaderRedux() {
                 &lt;/button&gt;
                 &lt;button onClick={handleToggleCardView} style={{ marginRight: '10px' }}&gt;
                     Toggle Card View
+                &lt;/button&gt;
+                &lt;button 
+                    onClick={handleSave} 
+                    disabled={!isDirty}
+                    style={{ 
+                        marginRight: '10px',
+                        backgroundColor: isDirty ? '#4CAF50' : '#ccc',
+                        color: 'white',
+                        cursor: isDirty ? 'pointer' : 'not-allowed'
+                    }}&gt;
+                    💾 Save Changes
                 &lt;/button&gt;
                 &lt;button onClick={handleClearFiles}&gt;
                     Clear All Files
@@ -2200,7 +2551,26 @@ export class KikoUploaderComponent {
                     })
                 );
 
-            // Demo 4 controls
+            // Demo 3 controls
+            const demo3Uploader = document.getElementById('demo3-uploader');
+            const demo3Button = document.getElementById('demo3-get-files');
+
+            if (demo3Button) {
+                demo3Button.addEventListener('click', () => {
+                    if (demo3Uploader) {
+                        const files = demo3Uploader.getUploadedFiles();
+                        const jsonData = JSON.stringify(files, null, 2);
+                        const dialogContent = `<pre style="text-align: left; max-height: 400px; overflow-y: auto; background: #f8f9fa; padding: 15px; border-radius: 5px; font-family: 'Courier New', monospace; font-size: 12px; white-space: pre; overflow-x: auto;">${jsonData}</pre>`;
+                        showGeneralDialog('Kiko Uploader Files (JSON)', dialogContent, '', 'Close');
+                    } else {
+                        console.error('Demo 3 uploader not found');
+                    }
+                });
+            } else {
+                console.error('Demo 3 button not found');
+            }
+
+            // Demo 4 controls - Advanced features demo
             const demo4Uploader = document.getElementById('demo4-uploader');
             const demo4Button = document.getElementById('demo4-get-files');
 
@@ -2218,9 +2588,19 @@ export class KikoUploaderComponent {
             } else {
                 console.error('Demo 4 button not found');
             }
+
+            // Initialize Demo 4 uploader
+            if (demo4Uploader) {
+                demo4Uploader.whenReady().then(() => {
+                    demo4Uploader.setCardView(true); // Enable card view by default for this demo
+                    demo4Uploader.setDefaultDescriptions({
+                        desc1: 'Climate Change Impact Study 2025',
+                        desc2: "Dr. Sarah Johnson"
+                    });
+                });
+            }
         });
     </script>
 </body>
 
 </html>
-
