@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiko Uploader - Upload PDF and image files with ease</title>
+    <title>Kiko Uploader - Upload PDF, image, and video files with ease</title>
     <script src="https://rykc.github.io/kiko-uploader/kiko-uploader.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -1064,7 +1064,7 @@
                 </svg>
             </a>
             <div class="logo"></div>
-            <p>Kiko Uploader makes uploading and sorting files with ease <br>(PDF, JPG and PNG)</p>
+            <p>Kiko Uploader makes uploading and sorting files with ease <br>(PDF, JPG, PNG & MP4)</p>
         </div>
 
         <div id="features" class="demo-section">
@@ -1133,7 +1133,7 @@
                 <div class="feature-card">
                     <span class="feature-icon">👁️</span>
                     <h3>Built-in Viewer</h3>
-                    <p>Preview PDFs and images directly in browser with responsive full-screen viewer supporting both local and server files.</p>
+                    <p>Preview PDFs, images, and videos directly in browser with responsive full-screen viewer supporting both local and server files.</p>
                 </div>
 
                 <div class="feature-card">
@@ -1399,10 +1399,10 @@
                 </div>
 
                 <div class="api-item">
-                    <h4>uploader-bg-color</h4>
-                    <p>Background color of the upload area. Default: #fafafa</p>
+                    <h4>uploader-border-color</h4>
+                    <p>Border color of the upload area. Default: #ccc</p>
                     <div class="method-signature">
-                        <pre>uploader-bg-color="#f0f8ff"</pre>
+                        <pre>uploader-border-color="#4285f4"</pre>
                     </div>
                 </div>
 
@@ -1435,6 +1435,22 @@
                     <p>Enable full-width layout for the uploader wrapper. Default: false</p>
                     <div class="method-signature">
                         <pre>full-width="true"</pre>
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>max-desc-length</h4>
+                    <p>Maximum character length for description fields (0 = unlimited). Default: 0</p>
+                    <div class="method-signature">
+                        <pre>max-desc-length="200"</pre>
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>lang</h4>
+                    <p>Language for UI text. Supported: en, tc, sc, jp, ko. Default: en</p>
+                    <div class="method-signature">
+                        <pre>lang="jp"</pre>
                     </div>
                 </div>
 
@@ -1472,6 +1488,14 @@
                 </div>
 
                 <div class="api-item">
+                    <h4>layout</h4>
+                    <p>Layout mode for ungrouped files. Options: 'horizontal' (default), 'vertical', 'vertical-350' (with custom width). Default: horizontal</p>
+                    <div class="method-signature">
+                        <pre>layout="vertical-350"</pre>
+                    </div>
+                </div>
+
+                <div class="api-item">
                     <h4>groups</h4>
                     <p>JSON string defining folder structure with nested groups.</p>
                     <div class="method-signature">
@@ -1491,6 +1515,14 @@
                     <p>Zoom value for card view thumbnails (0.1 to 2.0). Default: 0.8</p>
                     <div class="method-signature">
                         <pre>cardview-size="1.2"</pre>
+                    </div>
+                </div>
+
+                <div class="api-item">
+                    <h4>allowed-formats</h4>
+                    <p>Comma-separated list of allowed file formats. Default: pdf,jpg,png,mp4</p>
+                    <div class="method-signature">
+                        <pre>allowed-formats="pdf,jpg,png,mp4"</pre>
                     </div>
                 </div>
 
