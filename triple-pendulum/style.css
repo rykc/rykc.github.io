@@ -306,6 +306,7 @@ select:focus {
 .state-item .value {
     color: #00d9ff;
     font-weight: 600;
+    font-size: 0.9rem;
 }
 
 .state-item.total-energy {
@@ -550,3 +551,4 @@ select option {
         margin: 15px 0;
     }
 }
+
