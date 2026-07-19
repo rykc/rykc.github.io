@@ -1,0 +1,240 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1113" />
+  <title>PDF Library</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0f1113;
+      --surface: #1a1c1f;
+      --surface-hover: #222428;
+      --border: rgb(255 255 255 / 10%);
+      --text: #f1f3f4;
+      --text-secondary: #9aa0a6;
+      --accent: #8ab4f8;
+      --accent-dim: rgb(138 180 248 / 15%);
+      --radius: 12px;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    body {
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: calc(var(--safe-top) + 16px) 16px calc(var(--safe-bottom) + 16px);
+    }
+
+    .pdf-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .pdf-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      transition:
+        background 120ms ease,
+        border-color 120ms ease;
+      touch-action: manipulation;
+    }
+
+    .pdf-card:active {
+      background: var(--surface-hover);
+      border-color: var(--accent-dim);
+    }
+
+    .pdf-icon {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+    }
+
+    .pdf-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .pdf-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .pdf-title {
+      display: block;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      /* Wrap long titles instead of truncating with an ellipsis, so
+         lengthy Chinese/English report names stay fully readable. */
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .pdf-meta {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .chevron {
+      flex: 0 0 auto;
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="pdf-list">
+    <a class="pdf-card"
+      href="./index.html?file=./pp2026-13-empowering-hong-kong-by-nurturing-and-pooling-talents-building-an-international-hub-for-high-calibre-talents-c.pdf&mode=snapshot">
+      <span class="pdf-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+          <path d="M5 3h9l5 5v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
+          <line x1="8" y1="13" x2="16" y2="13" />
+          <line x1="8" y1="17" x2="13" y2="17" />
+        </svg>
+      </span>
+      <span class="pdf-info">
+        <span class="pdf-title">專題快訊</span>
+        <span class="pdf-meta">Policy Pulse · 6 pages · Snapshot mode</span>
+      </span>
+      <span class="chevron" aria-hidden="true">›</span>
+    </a>
+
+    <a class="pdf-card"
+      href="./index.html?file=./pp2026-13-empowering-hong-kong-by-nurturing-and-pooling-talents-building-an-international-hub-for-high-calibre-talents-e.pdf&mode=snapshot">
+      <span class="pdf-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+          <path d="M5 3h9l5 5v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
+          <line x1="8" y1="13" x2="16" y2="13" />
+          <line x1="8" y1="17" x2="13" y2="17" />
+        </svg>
+      </span>
+      <span class="pdf-info">
+        <span class="pdf-title">Policy Pulse</span>
+        <span class="pdf-meta">Empowering Hong Kong · 6 pages · Snapshot mode</span>
+      </span>
+      <span class="chevron" aria-hidden="true">›</span>
+    </a>
+
+    <a class="pdf-card"
+      href="./index.html?file=./cm20260717_cb2_1067_c.pdf">
+      <span class="pdf-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+          <path d="M5 3h9l5 5v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
+          <line x1="8" y1="13" x2="16" y2="13" />
+          <line x1="8" y1="17" x2="13" y2="17" />
+        </svg>
+      </span>
+      <span class="pdf-info">
+        <span class="pdf-title">內務委員會就《皇崗口岸港方口岸區條例草案》向立法會提交的報告</span>
+        <span class="pdf-meta">House Committee Report · 99 pages · Normal mode</span>
+      </span>
+      <span class="chevron" aria-hidden="true">›</span>
+    </a>
+
+    <a class="pdf-card"
+      href="./index.html?file=./cm20260717_cb2_1067_e.pdf">
+      <span class="pdf-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+          <path d="M5 3h9l5 5v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
+          <line x1="8" y1="13" x2="16" y2="13" />
+          <line x1="8" y1="17" x2="13" y2="17" />
+        </svg>
+      </span>
+      <span class="pdf-info">
+        <span class="pdf-title">Report of the House Committee on the Huanggang Port Hong Kong Port Area Bill</span>
+        <span class="pdf-meta">House Committee Report · 101 pages · Normal mode</span>
+      </span>
+      <span class="chevron" aria-hidden="true">›</span>
+    </a>
+
+    <a class="pdf-card"
+      href="./index.html?file=./RT06_2026_20260717_tc.pdf">
+      <span class="pdf-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+          <path d="M5 3h9l5 5v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
+          <line x1="8" y1="13" x2="16" y2="13" />
+          <line x1="8" y1="17" x2="13" y2="17" />
+        </svg>
+      </span>
+      <span class="pdf-info">
+        <span class="pdf-title">台灣與新加坡融合教育的前線推行實況</span>
+        <span class="pdf-meta">Document · 14 pages · Normal mode</span>
+      </span>
+      <span class="chevron" aria-hidden="true">›</span>
+    </a>
+
+    <a class="pdf-card"
+      href="./index.html?file=./weekly-news_20260713a-c.pdf">
+      <span class="pdf-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+          <path d="M5 3h9l5 5v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
+          <line x1="8" y1="13" x2="16" y2="13" />
+          <line x1="8" y1="17" x2="13" y2="17" />
+        </svg>
+      </span>
+      <span class="pdf-info">
+        <span class="pdf-title">本周議會速覽</span>
+        <span class="pdf-meta">This Week in LegCo · 1 page · Normal mode</span>
+      </span>
+      <span class="chevron" aria-hidden="true">›</span>
+    </a>    
+  </div>
+
+  <script>
+    // Prevent the browser from caching this page so new PDFs show up after rebuild.
+    if (window.performance && performance.navigation.type === 1) {
+      // Reloaded — nothing to do, just let the page render.
+    }
+  </script>
+</body>
+
+</html>
