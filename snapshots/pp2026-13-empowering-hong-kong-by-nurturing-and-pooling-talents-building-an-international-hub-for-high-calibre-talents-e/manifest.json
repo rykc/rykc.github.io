@@ -1,0 +1,255 @@
+{
+  "version": 3,
+  "pageCount": 6,
+  "bakeWidth": 1200,
+  "source": "pp2026-13-empowering-hong-kong-by-nurturing-and-pooling-talents-building-an-international-hub-for-high-calibre-talents-e.pdf",
+  "sourceUrl": "http://127.0.0.1:50906/pdfs/pp2026-13-empowering-hong-kong-by-nurturing-and-pooling-talents-building-an-international-hub-for-high-calibre-talents-e.pdf",
+  "imageFormat": "png",
+  "pages": [
+    {
+      "number": 1,
+      "width": 1200,
+      "height": 1697.07720217698,
+      "src": "1.png",
+      "links": []
+    },
+    {
+      "number": 2,
+      "width": 1200,
+      "height": 1697.07720217698,
+      "src": "2.png",
+      "links": [
+        {
+          "rectPercent": {
+            "left": 15.684757777329839,
+            "top": 20.435195743063478,
+            "width": 21.137287509238725,
+            "height": 1.306537438236403
+          },
+          "url": "https://www.immd.gov.hk/eng/services/index.html#tab_b_1"
+        },
+        {
+          "rectPercent": {
+            "left": 79.05345024524624,
+            "top": 12.595971113645007,
+            "width": 9.494725525767658,
+            "height": 1.306537438236403
+          },
+          "url": "https://www.talentlist.gov.hk/en/talentlist.html"
+        },
+        {
+          "rectPercent": {
+            "left": 76.64466169455082,
+            "top": 29.961041429114406,
+            "width": 8.679533696163407,
+            "height": 0.9858418852147546
+          },
+          "url": "https://www.immd.gov.hk/eng/services/visas/TTPS.html"
+        },
+        {
+          "rectPercent": {
+            "left": 75.56440233823824,
+            "top": 30.94688331432916,
+            "width": 8.185513673318544,
+            "height": 0.9858418852147413
+          },
+          "url": "https://www.immd.gov.hk/eng/services/visas/TTPS.html"
+        },
+        {
+          "rectPercent": {
+            "left": 87.88382718537929,
+            "top": 65.7362932345116,
+            "width": 8.612006987838452,
+            "height": 1.3658067274800447
+          },
+          "url": "https://www.legco.gov.hk/yr2026/english/panels/mp/papers/mp20260223cb1-165-5-e.pdf"
+        },
+        {
+          "rectPercent": {
+            "left": 87.1548074984882,
+            "top": 67.10209996199164,
+            "width": 6.756870254652957,
+            "height": 1.3658067274800447
+          },
+          "url": "https://www.legco.gov.hk/yr2026/english/panels/mp/papers/mp20260223cb1-165-5-e.pdf"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "width": 1200,
+      "height": 1697.07720217698,
+      "src": "3.png",
+      "links": [
+        {
+          "rectPercent": {
+            "left": 53.093126385809306,
+            "top": 72.29641771189662,
+            "width": 33.844151044816215,
+            "height": 1.068985176738886
+          },
+          "url": "https://www.legco.gov.hk/en/legco-business/council/hansard_rundown.html?f20260617#192286"
+        },
+        {
+          "rectPercent": {
+            "left": 11.321625344352617,
+            "top": 73.3654028886355,
+            "width": 53.68761338439829,
+            "height": 1.0689851767388727
+          },
+          "url": "https://www.legco.gov.hk/en/legco-business/council/hansard_rundown.html?f20260617#192286"
+        },
+        {
+          "rectPercent": {
+            "left": 87.98881273936706,
+            "top": 70.01615355378183,
+            "width": 7.9409393267486434,
+            "height": 1.068985176738886
+          },
+          "url": "https://www.legco.gov.hk/yr2026/english/panels/ed/papers/ed20260331cb3-229-2-e.pdf"
+        },
+        {
+          "rectPercent": {
+            "left": 87.1548074984882,
+            "top": 71.08513873052071,
+            "width": 6.861855808640731,
+            "height": 1.496579247434422
+          },
+          "url": "https://www.legco.gov.hk/yr2026/english/panels/ed/papers/ed20260331cb3-229-2-e.pdf"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "width": 1200,
+      "height": 1697.07720217698,
+      "src": "4.png",
+      "links": [
+        {
+          "rectPercent": {
+            "left": 86.38664919707048,
+            "top": 66.98166096541239,
+            "width": 8.7806557817644,
+            "height": 1.5023992778411268
+          },
+          "url": "https://www.legco.gov.hk/yr2026/english/hc/sub_com/hs51/papers/hs5120260622cb2-844-1-e.pdf"
+        },
+        {
+          "rectPercent": {
+            "left": 85.34065712557951,
+            "top": 68.48406024325351,
+            "width": 7.600954108714632,
+            "height": 1.9299933485366758
+          },
+          "url": "https://www.legco.gov.hk/yr2026/english/hc/sub_com/hs51/papers/hs5120260622cb2-844-1-e.pdf"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "width": 1200,
+      "height": 1697.07720217698,
+      "src": "5.png",
+      "links": [
+        {
+          "rectPercent": {
+            "left": 87.98881273936706,
+            "top": 73.6581860509312,
+            "width": 7.9409393267486434,
+            "height": 1.068985176738886
+          },
+          "url": "https://www.legco.gov.hk/yr2025/english/counmtg/motion/cm20250730m-nmy-prpt-e.pdf"
+        },
+        {
+          "rectPercent": {
+            "left": 87.1548074984882,
+            "top": 74.7271712276701,
+            "width": 6.861855808640731,
+            "height": 1.496579247434422
+          },
+          "url": "https://www.legco.gov.hk/yr2025/english/counmtg/motion/cm20250730m-nmy-prpt-e.pdf"
+        },
+        {
+          "rectPercent": {
+            "left": 87.98881273936706,
+            "top": 85.41714177118966,
+            "width": 7.9409393267486434,
+            "height": 1.3658067274800447
+          },
+          "url": "https://www.legco.gov.hk/yr2026/english/panels/se/papers/se20260224cb2-231-4-e.pdf"
+        },
+        {
+          "rectPercent": {
+            "left": 87.1548074984882,
+            "top": 86.78294849866971,
+            "width": 6.861855808640731,
+            "height": 1.3657948498669688
+          },
+          "url": "https://www.legco.gov.hk/yr2026/english/panels/se/papers/se20260224cb2-231-4-e.pdf"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "width": 1200,
+      "height": 1697.07720217698,
+      "src": "6.png",
+      "links": [
+        {
+          "rectPercent": {
+            "left": 87.98881273936706,
+            "top": 66.44895001900419,
+            "width": 7.9409393267486434,
+            "height": 1.3658067274800314
+          },
+          "url": "https://www.legco.gov.hk/yr2026/english/panels/mp/papers/mp20260127cb1-37-1-e.pdf"
+        },
+        {
+          "rectPercent": {
+            "left": 87.1548074984882,
+            "top": 67.81475674648422,
+            "width": 6.861855808640731,
+            "height": 1.3658067274800583
+          },
+          "url": "https://www.legco.gov.hk/yr2026/english/panels/mp/papers/mp20260127cb1-37-1-e.pdf"
+        },
+        {
+          "rectPercent": {
+            "left": 80.87583148558757,
+            "top": 92.23561621056632,
+            "width": 7.076866223207682,
+            "height": 1.1877613074876514
+          },
+          "url": "https://www.legco.gov.hk/en/legco-business/committees/panel.html?education&2026#papers-and-reports"
+        },
+        {
+          "rectPercent": {
+            "left": 79.52025801249746,
+            "top": 93.42337751805397,
+            "width": 7.543841967345287,
+            "height": 1.1877613074876514
+          },
+          "url": "https://www.legco.gov.hk/en/legco-business/committees/panel.html?education&2026#papers-and-reports"
+        },
+        {
+          "rectPercent": {
+            "left": 60.66838003090774,
+            "top": 92.24747006841505,
+            "width": 7.076698246321304,
+            "height": 1.1877613074876514
+          },
+          "url": "https://www.legco.gov.hk/en/legco-business/committees/panel.html?manpower&2026#papers-and-reports"
+        },
+        {
+          "rectPercent": {
+            "left": 59.312638580931264,
+            "top": 93.43523137590269,
+            "width": 7.729288449909282,
+            "height": 1.1877613074876514
+          },
+          "url": "https://www.legco.gov.hk/en/legco-business/committees/panel.html?manpower&2026#papers-and-reports"
+        }
+      ]
+    }
+  ]
+}
