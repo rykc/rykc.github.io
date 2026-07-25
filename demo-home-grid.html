@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nanc-home-grid demo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;700&display=swap" />
+  <style>
+    html, body { margin: 0; background: #F5EFE6; }
+    demo-note {
+      display: block;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 24px 0;
+      font: 14px/1.5 system-ui, sans-serif;
+      color: #7a5a66;
+    }
+  </style>
+</head>
+<body>
+  <!-- <demo-note>
+    Demo for &lt;nanc-home-grid&gt;. Click any card to collapse the grid into a
+    menu bar with a content box. The purple top bar and floating toggle from
+    reference.html are intentionally omitted (out of scope). Each card's content
+    is projected via a named slot (e.g. <code>slot="absent-general"</code>).
+  </demo-note> -->
+
+  <nanc-home-grid sub-title="請選擇以下服務：" manual-href="#manual" manual-label="使用手冊">
+    <!-- One named slot per card id. The active card's slot is shown in the
+         content box; all others stay hidden. -->
+    <div slot="absent-general">
+      <p style="color:#2A4D3D;font-weight:700;font-size:20px;">大會不在席通知表格</p>
+      <p style="color:#7a5a66;">在此放置大會不在席通知的表單內容（例如 &lt;nanc-absence-form&gt;）。</p>
+    </div>
+    <div slot="absent-committee">
+      <p style="color:#2A4D3D;font-weight:700;font-size:20px;">委員會會議不在席通知</p>
+      <p style="color:#7a5a66;">委員會會議表單 + &lt;legco-meeting-dropdown&gt; 可放在這裡。</p>
+    </div>
+    <div slot="incomplete">
+      <p style="color:#2A4365;font-weight:700;font-size:20px;">未完成的通知</p>
+      <p style="color:#7a5a66;">列出已暫存但未提交的通知。</p>
+    </div>
+    <div slot="records">
+      <p style="color:#5E2036;font-weight:700;font-size:20px;">查閱或修改已填寫的紀錄</p>
+      <p style="color:#7a5a66;">已提交紀錄的查閱與修改。</p>
+    </div>
+    <div slot="contact">
+      <p style="color:#3D3360;font-weight:700;font-size:20px;">會議日程及會議秘書</p>
+      <p style="color:#7a5a66;">只顯示前後四星期的會議。查看您是委員的會議及會議秘書的聯絡方法。</p>
+    </div>
+    <div slot="overview">
+      <p style="color:#6E3820;font-weight:700;font-size:20px;">會議總覽</p>
+      <p style="color:#7a5a66;">只供立法會主席及總協調人使用。</p>
+    </div>
+
+    <!-- Optional actions slot, shown in the content-box footer when any card
+         is active and this slot has assigned nodes. -->
+    <div slot="content-actions">
+      <button type="button">暫時儲存</button>
+      <button type="button">確認提交</button>
+    </div>
+  </nanc-home-grid>
+
+  <script src="./nanc-home-grid.js"></script>
+</body>
+</html>
