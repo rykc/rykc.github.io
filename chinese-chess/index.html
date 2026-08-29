@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RYKC 中國象棋</title>
+  <script type="module" crossorigin src="./assets/index-N8Fk543v.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DuVPCNL_.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- HUD 狀態列 -->
+    <div id="hud" class="hidden">
+      <div id="hud-turn" class="hud-chip">
+        <span class="turn-dot red"></span><span id="hud-turn-text">紅方行棋</span>
+      </div>
+      <div id="hud-status" class="hud-chip status"></div>
+    </div>
+
+    <!-- 右側面板：棋譜 + 控制 -->
+    <div id="side-panel" class="hidden">
+      <div class="panel-section history-section">
+        <h3>棋譜</h3>
+        <div id="history-list"></div>
+      </div>
+      <div class="panel-section controls-section">
+        <button id="btn-undo" class="btn">悔棋</button>
+        <button id="btn-pause" class="btn hidden">暫停</button>
+        <button id="btn-flip" class="btn">翻轉視角</button>
+        <button id="btn-new-game" class="btn">新對局</button>
+      </div>
+    </div>
+
+    <!-- 模式選單 -->
+    <div id="menu-overlay" class="overlay">
+      <div class="menu-stage">
+        <!-- 吉祥物：企喺主選單 banner 左邊，好似喺度推介 -->
+        <div class="menu-mascot">
+          <img src="./assets/avatar-ByJSW_-V.png" alt="AI 吉祥物" class="mascot-avatar" draggable="false" />
+          <div class="mascot-bubble">歡迎！揀個模式開局啦！</div>
+        </div>
+        <div class="menu-card">
+        <h1>RYKC 中國象棋</h1>
+        <p class="subtitle">本人首次用 AI 做 3D 遊戲，請多指教！</p>
+        <div class="menu-group">
+          <h2>對局模式</h2>
+          <button class="btn menu-btn" data-mode="local">本地雙人</button>
+          <button class="btn menu-btn" data-mode="ai-black">與 AI 對戰</button>
+          <button class="btn menu-btn" data-mode="ai-vs-ai">AI 對 AI（觀戰）</button>
+        </div>
+        <button id="btn-menu-settings" class="btn menu-btn">⚙️ 雲端 AI 連線設定 (API Key)</button>
+        <p class="hint" id="menu-ai-hint">AI 模式開始時可揀模型同強度；LLM 失敗時自動使用內建 AI。</p>
+        </div><!-- /menu-card -->
+      </div><!-- /menu-stage -->
+    </div>
+
+    <!-- 模式揀模型對話框（與 AI 對戰 / AI 對 AI 共用） -->
+    <div id="mode-model-dialog" class="overlay hidden">
+      <div class="menu-card dlg-card">
+        <button id="btn-dlg-close" class="btn btn-x" title="關閉">✕</button>
+        <h2 id="mode-model-title">揀 AI 模型</h2>
+        <div class="menu-group">
+          <label class="menu-label" id="dlg-red-label">紅方模型
+            <select id="aivai-model-red" class="menu-select"></select>
+          </label>
+          <label class="menu-label hidden" id="dlg-black-label">黑方模型
+            <select id="aivai-model-black" class="menu-select"></select>
+          </label>
+          <h2 class="dlg-strength-title">AI 強度</h2>
+          <div class="difficulty-row" id="difficulty-row">
+            <button class="btn diff-btn selected" data-diff="1">簡單</button>
+            <button class="btn diff-btn" data-diff="2">普通</button>
+            <button class="btn diff-btn" data-diff="3">困難</button>
+          </div>
+        </div>
+        <div class="dlg-actions">
+          <button id="btn-dlg-custom" class="btn btn-mini btn-corner-left">➕ 自訂模型</button>
+          <button id="btn-dlg-start" class="btn primary btn-corner-right">開始對局</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 自訂模型管理對話框 -->
+    <div id="custom-model-dialog" class="overlay hidden">
+      <div class="menu-card">
+        <h2>自訂 AI 模型</h2>
+        <p class="settings-sub">為指定 Provider 加入自訂模型 ID，或移除先前加入嘅自訂模型。</p>
+        <div class="menu-group">
+          <label class="menu-label">Provider
+            <select id="custom-model-provider" class="menu-select">
+              <option value="openrouter">OpenRouter</option>
+              <option value="ollama">Ollama</option>
+            </select>
+          </label>
+          <label class="menu-label">模型 ID（與 API 傳入一致，如 moonshot/kimi-k2 或 llama4:70b）
+            <input type="text" id="custom-model-input" class="menu-select" placeholder="provider/model 或 tag" autocomplete="off" />
+          </label>
+          <button id="btn-add-custom-model" class="btn menu-btn">加入清單</button>
+          <div id="custom-model-list" class="custom-model-list"></div>
+        </div>
+        <div class="settings-actions">
+          <button id="btn-custom-done" class="btn primary">完成</button>
+        </div>
+        <p class="hint">自訂模型沿用該 Provider 已存嘅 API Key / Base URL；移除後即刻喺 dropdown 消失。</p>
+      </div>
+    </div>
+
+    <!-- 設定 modal -->
+    <div id="settings-overlay" class="overlay hidden">
+      <div class="menu-card settings-card">
+        <h2>雲端 AI 連線設定</h2>
+
+        <!-- API Keys：兩個 Provider 並排 -->
+        <div class="key-grid">
+          <div class="key-col" id="key-col-openrouter">
+            <div class="key-col-head">
+              <span class="key-col-title">OpenRouter<span class="key-col-sub">雲端</span></span>
+              <span class="key-chip" id="chip-openrouter"></span>
+            </div>
+            <input type="password" id="set-key-openrouter" placeholder="sk-or-v1-...（openrouter.ai/keys）" autocomplete="off" />
+            <div class="key-col-actions">
+              <button id="btn-test-openrouter" class="btn btn-mini">測試連線</button>
+              <button id="btn-clear-openrouter" class="btn btn-mini btn-clear">清除 Key</button>
+            </div>
+            <div class="test-mini" id="test-openrouter-result"></div>
+          </div>
+          <div class="key-col" id="key-col-ollama">
+            <div class="key-col-head">
+              <span class="key-col-title">Ollama<span class="key-col-sub">本地</span></span>
+              <span class="key-chip" id="chip-ollama"></span>
+            </div>
+            <input type="password" id="set-key-ollama" placeholder="本地唔使 key（留空即可）" autocomplete="off" />
+            <div class="key-col-actions">
+              <button id="btn-test-ollama" class="btn btn-mini">測試連線</button>
+              <button id="btn-clear-ollama" class="btn btn-mini btn-clear">清除 Key</button>
+            </div>
+            <div class="test-mini" id="test-ollama-result"></div>
+          </div>
+        </div>
+
+        <!-- 進階設定 -->
+        <details class="adv" id="settings-advanced">
+          <summary>進階設定（自訂端點 / Base URL）</summary>
+          <label>Ollama Base URL
+            <input type="text" id="set-ollama-url" placeholder="http://localhost:11434/v1" autocomplete="off" />
+          </label>
+          <label>自訂端點 Base URL（OpenAI 相容）
+            <input type="text" id="set-custom-url" placeholder="https://api.openai.com/v1" autocomplete="off" />
+          </label>
+          <label>自訂端點 API Key
+            <input type="password" id="set-key-custom" placeholder="sk-..." autocomplete="off" />
+          </label>
+          <label>自訂端點 Model
+            <input type="text" id="set-custom-model" placeholder="必填，例如 gpt-4o-mini" autocomplete="off" />
+          </label>
+          <label>預設服務提供者（dropdown 未揀模型時用）
+            <select id="set-provider">
+              <option value="openrouter">OpenRouter（雲端）</option>
+              <option value="ollama">Ollama（本地）</option>
+              <option value="custom">自訂（OpenAI 相容）</option>
+            </select>
+          </label>
+          <label>預設模型（dropdown 未揀時用）
+            <input type="text" id="set-model" placeholder="例如 z-ai/glm-5.2" autocomplete="off" />
+          </label>
+        </details>
+
+        <p class="warning">⚠️ API Key 僅儲存於瀏覽器 localStorage，請勿在公用電腦使用。</p>
+        <div class="settings-actions">
+          <button id="btn-save-settings" class="btn primary">💾 儲存全部</button>
+          <button id="btn-close-settings" class="btn">關閉</button>
+        </div>
+        <div id="test-result" class="test-result"></div>
+      </div>
+    </div>
+
+    <!-- 勝負對話框 -->
+    <div id="gameover-overlay" class="overlay hidden">
+      <div class="menu-card">
+        <h1 id="gameover-title">紅方勝</h1>
+        <p id="gameover-reason" class="subtitle">將死</p>
+        <button id="btn-gameover-new" class="btn primary">再來一局</button>
+        <button id="btn-gameover-menu" class="btn">回主選單</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
