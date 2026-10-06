@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#102a43">
+    <meta name="description" content="在香港地圖探索九巴及龍運路線，尋找附近巴士站，查看實時預計到站時間。">
+    <title>MONiBUS · 每一程，都有方向</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/leaflet/leaflet.css">
+    <link rel="stylesheet" href="./assets/app.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="MONiBUS 首頁">
+          <img class="brand-wordmark" src="./assets/monibus-logo.svg" width="260" height="44" alt="MONiBUS">
+        </a>
+        <div class="topbar-caption">每一程，都有方向<span>EXPLORE HONG KONG, ONE STOP AT A TIME.</span></div>
+        <div class="topbar-meta"><span class="live-dot"></span>九巴 · 龍運<span class="prototype-tag">公開數據</span></div>
+        <button id="header-eta-refresh" class="refresh-button header-eta-refresh" type="button" aria-label="更新目前站點到站時間" hidden><span data-icon="refresh"></span></button>
+      </header>
+
+      <main>
+        <div id="map" aria-label="香港巴士互動地圖"></div>
+        <aside id="explorer" class="explorer" aria-label="巴士路線與站點搜尋">
+          <button class="drawer-handle" id="drawer-toggle" aria-label="收起資訊面板" aria-expanded="true"><span></span></button>
+          <div class="explorer-heading">
+            <div class="eyebrow">YOUR CITY, CONNECTED</div>
+            <h1>探索香港<span>，每一程。</span></h1>
+            <p>從一條路線開始，發現城市的連結。</p>
+          </div>
+          <div class="mode-tabs" role="tablist" aria-label="探索模式">
+            <button id="route-tab" class="mode-tab active" role="tab" aria-selected="true" data-mode="route"><span data-icon="route"></span>搜尋路線</button>
+            <button id="nearby-tab" class="mode-tab" role="tab" aria-selected="false" data-mode="nearby"><span data-icon="pin"></span>附近站點</button>
+          </div>
+          <div id="route-search" class="search-wrap">
+            <label for="route-number-input" class="sr-only">搜尋路線號碼</label>
+            <input id="route-number-input" class="route-number-input" type="text" inputmode="numeric" placeholder="路線號碼" autocomplete="off" spellcheck="false">
+            <label for="search-input" class="sr-only">搜尋路線號碼或目的地</label>
+            <span data-icon="search"></span>
+            <input id="search-input" type="search" placeholder="路線號碼或目的地，例如 1A" autocomplete="off" spellcheck="false">
+            <span class="search-hint">搜尋</span>
+          </div>
+          <div id="panel-content" class="panel-content" aria-live="polite"><div class="loading-state"><span class="spinner"></span><p>正在載入香港巴士路線…</p></div></div>
+          <footer class="panel-footer"><span class="footer-dot"></span><span id="snapshot-date">正在讀取資料版本</span><button id="sources-button" type="button">資料來源<span data-icon="arrow-up-right"></span></button></footer>
+        </aside>
+
+        <div class="map-heading" id="map-heading"><span class="map-heading-dot"></span><span>香港 · HONG KONG</span><span class="map-heading-rule"></span><span id="map-mode-label">路線探索</span></div>
+        <div id="route-banner" class="route-banner" hidden></div>
+        <div class="map-actions">
+          <button id="locate-button" class="map-action" aria-label="定位我的位置" title="定位我的位置"><span data-icon="locate"></span></button>
+          <button id="fit-button" class="map-action" aria-label="顯示完整路線或香港全景" title="顯示完整路線"><span data-icon="expand"></span></button>
+        </div>
+        <button id="search-area" class="search-area" hidden><span data-icon="search"></span>搜尋此範圍 <span class="radius-label">500 m</span></button>
+        <div class="map-legend" id="map-legend"><span class="legend-line"></span>行經路線<span class="legend-station"></span>巴士站</div>
+        <div class="map-credit"><a href="https://www.landsd.gov.hk/" target="_blank" rel="noopener noreferrer"><img src="./assets/landsd-logo.jpg" width="28" height="28" alt="地政總署"></a><span>© Map from Lands Department</span></div>
+        <div id="toast" class="toast" role="status" hidden></div>
+        <div id="tile-warning" class="tile-warning" role="status" hidden>底圖暫時無法載入，路線及站點仍可查看。<button id="tile-retry">重試底圖</button></div>
+      </main>
+    </div>
+
+    <dialog id="sources-dialog">
+      <button id="close-sources" class="dialog-close" aria-label="關閉資料來源">×</button>
+      <div class="eyebrow">OPEN DATA, OPEN CITY</div><h2>資料來源</h2>
+      <p>MONiBUS 使用官方開放數據，讓你探索香港的巴士網絡。</p>
+      <a href="https://data.gov.hk/tc-data/dataset/hk-td-tis_21-etakmb" target="_blank" rel="noopener noreferrer">九巴及龍運 · 路線、站點及 ETA ↗</a>
+      <a href="https://portal.csdi.gov.hk/geoportal/?datasetId=td_rcd_1638844988873_41214&amp;lang=zh-hk" target="_blank" rel="noopener noreferrer">運輸署／CSDI · 巴士路線線形 ↗</a>
+      <a href="https://p1static.csdi.gov.hk/csdi-webpage/apidoc/TopographicMapAPI" target="_blank" rel="noopener noreferrer">地政總署 · 底圖及地名標籤 ↗</a>
+      <p class="source-note">原始到站數據的知識產權擁有人為九巴及龍運，由運輸署發放。地圖及路線線形的知識產權屬香港特區政府。到站時間為預計資料；原定班次會另外標示。路線線形屬定期更新資料，臨時改道請參閱營辦商公告。</p>
+      <a href="https://data.gov.hk/tc/terms-and-conditions" target="_blank" rel="noopener noreferrer">開放數據使用條款 ↗</a>
+      <a href="https://portal.csdi.gov.hk/csdi-webpage/doc/TNC" target="_blank" rel="noopener noreferrer">地圖服務使用條款 ↗</a>
+    </dialog>
+    <noscript>請啟用 JavaScript，以使用香港巴士互動地圖。</noscript>
+    <script type="module" src="./assets/app.js"></script>
+  </body>
+</html>
