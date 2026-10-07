@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#102a43">
-    <meta name="description" content="在香港地圖探索九巴及龍運路線，尋找附近巴士站，查看實時預計到站時間。">
+    <meta name="description" content="在香港地圖探索九巴、龍運及城巴路線，尋找附近巴士站，查看實時預計到站時間。">
     <title>MONiBUS · 每一程，都有方向</title>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./assets/leaflet/leaflet.css">
-    <link rel="stylesheet" href="./assets/app-fcd06018d32d.css">
+    <link rel="stylesheet" href="./assets/app-f74a3b07b57c.css">
   </head>
   <body>
     <div class="app-shell">
@@ -17,7 +17,8 @@
           <img class="brand-wordmark" src="./assets/monibus-logo.svg" width="260" height="44" alt="MONiBUS">
         </a>
         <div class="topbar-caption">每一程，都有方向<span>EXPLORE HONG KONG, ONE STOP AT A TIME.</span></div>
-        <div class="topbar-meta"><span class="live-dot"></span>九巴 · 龍運<span class="prototype-tag">公開數據</span></div>
+        <div class="topbar-meta"><span class="live-dot"></span>九巴 · 龍運 · 城巴<span class="prototype-tag">公開數據</span></div>
+        <button id="mobile-sources-button" type="button" class="mobile-sources-button" aria-label="資料來源">九巴 · 龍運 · 城巴</button>
         <button id="header-eta-refresh" class="refresh-button header-eta-refresh" type="button" aria-label="更新目前站點到站時間" hidden><span data-icon="refresh"></span></button>
       </header>
 
@@ -62,13 +63,14 @@
       <div class="eyebrow">OPEN DATA, OPEN CITY</div><h2>資料來源</h2>
       <p>MONiBUS 使用官方開放數據，讓你探索香港的巴士網絡。</p>
       <a href="https://data.gov.hk/tc-data/dataset/hk-td-tis_21-etakmb" target="_blank" rel="noopener noreferrer">九巴及龍運 · 路線、站點及 ETA ↗</a>
+      <a href="https://data.gov.hk/tc-data/dataset/ctb-eta-transport-realtime-eta" target="_blank" rel="noopener noreferrer">城巴 · 路線、站點及 ETA ↗</a>
       <a href="https://portal.csdi.gov.hk/geoportal/?datasetId=td_rcd_1638844988873_41214&amp;lang=zh-hk" target="_blank" rel="noopener noreferrer">運輸署／CSDI · 巴士路線線形 ↗</a>
       <a href="https://p1static.csdi.gov.hk/csdi-webpage/apidoc/TopographicMapAPI" target="_blank" rel="noopener noreferrer">地政總署 · 底圖及地名標籤 ↗</a>
-      <p class="source-note">原始到站數據的知識產權擁有人為九巴及龍運，由運輸署發放。地圖及路線線形的知識產權屬香港特區政府。到站時間為預計資料；原定班次會另外標示。路線線形屬定期更新資料，臨時改道請參閱營辦商公告。</p>
+      <p class="source-note">巴士資料由九巴、龍運及城巴提供，經香港政府開放數據平台發放。地圖及路線線形的知識產權屬香港特區政府。到站時間為預計資料；原定班次及營辦商備註會另外標示。沒有到站預測不代表停駛。路線線形屬定期更新資料，臨時改道請參閱營辦商公告。</p>
       <a href="https://data.gov.hk/tc/terms-and-conditions" target="_blank" rel="noopener noreferrer">開放數據使用條款 ↗</a>
       <a href="https://portal.csdi.gov.hk/csdi-webpage/doc/TNC" target="_blank" rel="noopener noreferrer">地圖服務使用條款 ↗</a>
     </dialog>
     <noscript>請啟用 JavaScript，以使用香港巴士互動地圖。</noscript>
-    <script type="module" src="./assets/app-JwfVFVog.js"></script>
+    <script type="module" src="./assets/app-C6zkuHgy.js"></script>
   </body>
 </html>

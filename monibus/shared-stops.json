@@ -1,0 +1,23 @@
+[
+  {
+    "id": "LOC-TD-10000306",
+    "name": "士美菲路（吉席街）",
+    "lat": 22.283414,
+    "lng": 114.128472,
+    "members": [
+      "KMB-0ED8503933F861D8",
+      "CTB-002692"
+    ],
+    "reviewedAt": "2026-10-08",
+    "tdStopId": "10000306",
+    "evidence": [
+      "https://static.data.gov.hk/td/routes-fares-xml/ROUTE_BUS.xml",
+      "https://static.data.gov.hk/td/routes-fares-xml/RSTOP_BUS.xml",
+      "https://static.data.gov.hk/td/routes-fares-xml/STOP_BUS.xml",
+      "https://data.etabus.gov.hk/v1/transport/kmb/stop/0ED8503933F861D8",
+      "https://rt.data.gov.hk/v2/transport/citybus/stop/002692",
+      "https://mapapi.geodata.gov.hk/gs/api/v1.0.0/xyz/basemap/WGS84/20/856711/457681.png"
+    ],
+    "review": "TD joint KMB+CTB route 904 (route ID 1393), direction 2, stop sequence 3 explicitly uses one TD stop 10000306 with both operator names. Cross-checked each operator's 904 departing Kennedy Town sequence: same third boarding stop, followed by Sai Cheung Street. Lands Department map reviewed at zoom 20: both points align with the north-side Catchick Street boarding point west of North Street; Citybus's coordinate is offset toward the roadway. Kennedy Town terminal and West Street candidates remain separate because their boarding points are ambiguous."
+  }
+]
