@@ -1,2 +1,0 @@
-/*! MONiBUS | Leaflet © Vladimir Agafonkin, BSD-2-Clause. See THIRD_PARTY_NOTICES.txt. */
-const t=t=>t*Math.PI/180;function n(n,a){const s=t(a[1]-n[1]),i=t(a[0]-n[0]),c=Math.sin(s/2)**2+Math.cos(t(n[1]))*Math.cos(t(a[1]))*Math.sin(i/2)**2;return 12742017.6*Math.asin(Math.min(1,Math.sqrt(c)))}function a(t,a,s=500){return t.map(t=>({...t,distance:n([t.lng,t.lat],[a.lng,a.lat])})).filter(t=>t.distance<=s).sort((t,n)=>t.distance-n.distance)}export{a as nearbyStops};

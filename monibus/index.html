@@ -30,19 +30,17 @@
             <h1>探索香港<span>，每一程。</span></h1>
             <p>從一條路線開始，發現城市的連結。</p>
           </div>
-          <div class="mode-tabs" role="tablist" aria-label="探索模式">
-            <button id="route-tab" class="mode-tab active" role="tab" aria-selected="true" data-mode="route"><span data-icon="route"></span>搜尋路線</button>
-            <button id="nearby-tab" class="mode-tab" role="tab" aria-selected="false" data-mode="nearby"><span data-icon="pin"></span>附近站點</button>
-          </div>
-          <div id="route-search" class="search-wrap">
-            <label for="route-number-input" class="sr-only">搜尋路線號碼</label>
-            <input id="route-number-input" class="route-number-input" type="text" inputmode="numeric" placeholder="路線號碼" autocomplete="off" spellcheck="false">
-            <label for="search-input" class="sr-only">搜尋路線號碼或目的地</label>
-            <span data-icon="search"></span>
-            <input id="search-input" type="search" placeholder="路線號碼或目的地，例如 1A" autocomplete="off" spellcheck="false">
-            <span class="search-hint">搜尋</span>
+          <div class="search-toolbar" aria-label="搜尋路線或附近站點">
+            <div id="route-search" class="search-wrap">
+              <label id="search-label" for="search-input" class="sr-only">搜尋路線號碼或目的地</label>
+              <span data-icon="search"></span>
+              <input id="search-input" type="text" inputmode="text" placeholder="路線號碼，例如 960P" autocomplete="off" spellcheck="false" autocapitalize="characters">
+              <button id="input-kind-toggle" type="button" class="input-kind-toggle" aria-label="切換至目的地搜尋">地點</button>
+            </div>
+            <button id="nearby-button" class="nearby-button" type="button" aria-pressed="false"><span data-icon="pin"></span>附近</button>
           </div>
           <div id="panel-content" class="panel-content" aria-live="polite"><div class="loading-state"><span class="spinner"></span><p>正在載入香港巴士路線…</p></div></div>
+          <section id="route-keyboard" class="route-keyboard" aria-label="路線輸入鍵盤" hidden></section>
           <footer class="panel-footer"><span class="footer-dot"></span><span id="snapshot-date">正在讀取資料版本</span><button id="sources-button" type="button">資料來源<span data-icon="arrow-up-right"></span></button></footer>
         </aside>
 
