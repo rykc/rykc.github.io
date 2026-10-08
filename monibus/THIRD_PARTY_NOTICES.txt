@@ -28,6 +28,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 Map: Lands Department, HKSAR Government.
-Bus data: KMB, Long Win Bus and Citybus, distributed through DATA.GOV.HK.
+Bus data: KMB, Long Win Bus, Citybus and MTR Corporation, distributed through DATA.GOV.HK.
 Citybus dataset: https://data.gov.hk/tc-data/dataset/ctb-eta-transport-realtime-eta
+MTR Bus dataset: https://data.gov.hk/tc-data/dataset/mtr-mtr_bus-mtr-bus-eta-data
 Route geometry: Transport Department, CSDI Portal.
